@@ -1,0 +1,7 @@
+{
+  "name": "my-recipes-ion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

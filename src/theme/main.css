@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Roboto+Condensed:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Roboto";
+}
+
+:root {
+  --primary-color: #ab9140;
+  --secondary-color: #548498;
+  --background-color: #f7f7f7;
+  --card-color: white;
+  --header-color: #2e2404;
+
+  --font-inactive: #979797;
+  --font-color: #464646;
+  --font-light: #d9d9d9;
+
+  --element-box-shadow: 0 4px 4px 0 #00000020;
+  --border-radius-s: 4px;
+  --border-radius-m: 8px;
+  --border-radius-l: 25px;
+}
+html {
+  background-color: black;
+}
+
+#app {
+  background-color: var(--background-color);
+  max-width: 450px;
+  min-height: 100svh;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+}
+h1,
+h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--header-color);
+}
+.box {
+  background-color: var(--card-color);
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--box-shadow);
+  padding: 0.7rem;
+}
+ul {
+  padding: 0;
+}
+button {
+  cursor: pointer;
+}

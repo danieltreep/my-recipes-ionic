@@ -56,3 +56,9 @@ ul {
 button {
   cursor: pointer;
 }
+ion-card {
+  --box-shadow: var(--element-box-shadow);
+}
+ion-content {
+  --background: var(--background-color);
+}

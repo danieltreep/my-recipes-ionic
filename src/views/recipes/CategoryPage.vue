@@ -2,10 +2,10 @@
   <ion-page>
     <ion-content>
       <img :src="imageUrl" alt="" />
-      <div class="main-content">
+      <div class="main-content ion-padding">
         <header>
           <ion-button @click="router.go(-1)">
-            <ion-icon :icon="arrowBack" size="large"></ion-icon>
+            <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
           </ion-button>
 
           <div class="hero">

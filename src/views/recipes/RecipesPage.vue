@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <MainHeader />
-    <ion-content>
+    <ion-content class="ion-padding">
       <CategoryList v-if="!searchTerm" />
       <SearchList v-if="searchTerm" />
     </ion-content>

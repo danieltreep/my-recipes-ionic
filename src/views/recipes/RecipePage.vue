@@ -1,50 +1,72 @@
 <template>
   <ion-page>
-    <div>
-      <img :src="imageUrl" alt="" />
-      <div class="page ion-padding">
-        <header>
-          <span
-            tabindex="0"
-            aria-label="Go back to category"
-            class="material-symbols-outlined"
-            @click="router.go(-1)"
-            @keydown.enter="router.go(-1)"
-            >arrow_back</span
-          >
-          <span
-            tabindex="0"
-            class="material-symbols-outlined fav"
-            @click="handleFav"
-            @keydown.enter="handleFav"
-            v-if="!selectedRecipe.favorite"
-            >favorite_border</span
-          >
-          <span
-            tabindex="0"
-            class="material-icons fav"
-            @click="handleFav"
-            @keydown.enter="handleFav"
-            v-if="selectedRecipe.favorite"
-            >favorite</span
-          >
-          <span
-            class="material-symbols-outlined"
-            tabindex="0"
-            @click="showOptions = !showOptions"
-            @keydown.enter="showOptions = !showOptions"
-            >more_vert</span
-          >
-          <RecipeOptions v-if="showOptions" @delete="handleDelete" />
-        </header>
-        <SingleRecipe :recipe="selectedRecipe" v-if="selectedRecipe" />
-      </div>
+    <img :src="imageUrl" alt="" />
+    <div class="page ion-padding">
+      <header>
+        <ion-button @click="router.go(-1)" @keydown.enter="router.go(-1)">
+          <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="fav"
+          @click="handleFav"
+          @keydown.enter="handleFav"
+          v-if="!selectedRecipe.favorite"
+        >
+          <ion-icon :icon="heartOutline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button
+          @click="handleFav"
+          @keydown.enter="handleFav"
+          v-if="selectedRecipe.favorite"
+          class="fav"
+        >
+          <ion-icon :icon="heart" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button
+          id="options-trigger"
+          @click="showOptions = !showOptions"
+          @keydown.enter="showOptions = !showOptions"
+          slot="icon-only"
+        >
+          <ion-icon :icon="ellipsisVertical" id="options-trigger"></ion-icon>
+        </ion-button>
+        <ion-popover trigger="options-trigger" trigger-action="click">
+          <ion-content class="ion-padding">
+            <ion-item
+              @click="$emit('delete')"
+              @keydown.enter="$emit('delete')"
+              class="option"
+              tabindex="0"
+            >
+              <ion-icon :icon="trashBin"></ion-icon>
+              <p>Verwijderen</p>
+            </ion-item>
+            <ion-item
+              class="option"
+              @click="handleEdit"
+              @keydown.enter="handleEdit"
+              tabindex="0"
+            >
+              <ion-icon :icon="pencil"></ion-icon>
+              <p>Aanpassen</p>
+            </ion-item>
+          </ion-content>
+        </ion-popover>
+      </header>
+      <SingleRecipe :recipe="selectedRecipe" v-if="selectedRecipe" />
     </div>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage } from "@ionic/vue";
+import {
+  IonPage,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonItem,
+  IonPopover,
+} from "@ionic/vue";
 import getDocument from "@/composables/recipes/getDocument";
 import setFavorite from "@/composables/recipes/setFavorite";
 import SingleRecipe from "@/components/recipes/SingleRecipe.vue";
@@ -57,6 +79,14 @@ import { storeToRefs } from "pinia";
 
 import useDeleteDocument from "@/composables/recipes/deleteDocument";
 import { useRecipesStore } from "@/stores/recipes";
+import {
+  arrowBack,
+  ellipsisVertical,
+  heart,
+  pencil,
+  heartOutline,
+  trashBin,
+} from "ionicons/icons";
 
 const { selectedRecipe } = storeToRefs(useSelectedRecipeStore());
 
@@ -90,6 +120,9 @@ const handleFav = async () => {
   selectedRecipe.value.favorite = !selectedRecipe.value.favorite;
   await setFavorite(props.id, selectedRecipe.value.favorite);
 };
+const handleEdit = () => {
+  router.push({ name: "Edit" });
+};
 
 const handleDelete = async () => {
   console.log("deleted");
@@ -116,11 +149,12 @@ img {
 header {
   display: flex;
 }
-span {
-  cursor: pointer;
+ion-button {
+  --background: transparent;
+  --box-shadow: 0;
 }
 .fav {
-  margin: 0 1rem 0 auto;
+  margin-left: auto;
 }
 .fav.material-icons {
   color: rgb(247, 63, 63);

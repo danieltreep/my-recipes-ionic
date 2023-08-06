@@ -1,15 +1,14 @@
 <template>
   <li class="inputGroup" :class="checked ? 'checked' : ''">
     <div class="ingredient">
-      <span
-        tabindex="0"
-        aria-label="delete ingredient"
+      <ion-icon
         v-if="edit"
-        class="material-symbols-outlined"
         @click.prevent="handleDelete(index)"
         @keydown.enter="handleDelete(index)"
-        >delete</span
-      >
+        :icon="trashBin"
+        size="small"
+      ></ion-icon>
+
       <ion-checkbox
         v-if="!edit"
         class="material-symbols-outlined"
@@ -29,10 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { IonCheckbox } from "@ionic/vue";
+import { IonCheckbox, IonIcon, IonButton } from "@ionic/vue";
 import type { Ingredient } from "@/types/Ingredient";
 import { useNewRecipeStore } from "@/stores/newRecipe";
 import { ref } from "vue";
+import { trashBin } from "ionicons/icons";
 
 const { deleteIngredient } = useNewRecipeStore();
 const checked = ref(false);

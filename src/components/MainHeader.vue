@@ -1,5 +1,5 @@
 <template>
-  <ion-header>
+  <ion-header class="ion-padding">
     <img src="@/assets/logo.svg" />
 
     <SearchBar />

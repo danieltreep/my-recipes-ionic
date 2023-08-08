@@ -53,12 +53,18 @@ h3 {
 ul {
   padding: 0;
 }
-button {
-  cursor: pointer;
-}
 ion-card {
   --box-shadow: var(--element-box-shadow);
 }
 ion-content {
   --background: var(--background-color);
+}
+ion-input {
+  text-align: end;
+}
+.error {
+  text-align: center;
+  font-weight: 500;
+  color: red;
+  margin: 1rem;
 }

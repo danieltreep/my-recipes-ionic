@@ -4,11 +4,15 @@
       <img :src="imageUrl" alt="" />
       <div class="page ion-padding">
         <header>
-          <ion-button @click="router.go(-1)" @keydown.enter="router.go(-1)">
+          <ion-button
+            @click="router.go(-1)"
+            @keydown.enter="router.go(-1)"
+            class="ion-no-padding"
+          >
             <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
           </ion-button>
           <ion-button
-            class="fav"
+            class="fav ion-no-padding"
             @click="handleFav"
             @keydown.enter="handleFav"
             v-if="!selectedRecipe.favorite"
@@ -19,15 +23,14 @@
             @click="handleFav"
             @keydown.enter="handleFav"
             v-if="selectedRecipe.favorite"
-            class="fav"
+            class="fav faved ion-no-padding"
           >
             <ion-icon :icon="heart" slot="icon-only"></ion-icon>
           </ion-button>
           <ion-button
             id="options-trigger"
-            @click="showOptions = !showOptions"
-            @keydown.enter="showOptions = !showOptions"
             slot="icon-only"
+            class="ion-no-padding"
           >
             <ion-icon :icon="ellipsisVertical" id="options-trigger"></ion-icon>
           </ion-button>
@@ -140,6 +143,7 @@ const handleDelete = async () => {
   backdrop-filter: blur(10px);
   transform: translateY(-100px);
   min-height: 50vh;
+  padding: 1.5rem;
 }
 
 img {
@@ -156,9 +160,9 @@ ion-button {
   --box-shadow: 0;
 }
 .fav {
-  margin-left: auto;
+  margin: 0 1.5rem 0 auto;
 }
-.fav.material-icons {
+.faved {
   color: rgb(247, 63, 63);
 }
 </style>

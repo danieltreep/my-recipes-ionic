@@ -12,9 +12,6 @@
 // Ionic
 import { IonPage, IonContent, onIonViewWillEnter } from "@ionic/vue";
 
-// External
-import { onMounted, onUnmounted } from "vue";
-
 // Components
 import CategoryList from "@/components/categories/CategoryList.vue";
 import MainHeader from "@/components/MainHeader.vue";

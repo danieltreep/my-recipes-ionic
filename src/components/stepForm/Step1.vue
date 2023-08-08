@@ -5,7 +5,11 @@
       <legend>Informatie</legend>
       <ion-item lines="none">
         <ion-icon :icon="text" slot="start"></ion-icon>
-        <ion-input label="Title:" v-model="newRecipe.title"></ion-input>
+        <ion-input
+          label="Title:"
+          v-model="newRecipe.title"
+          required
+        ></ion-input>
       </ion-item>
 
       <ion-item lines="none">
@@ -14,6 +18,7 @@
           label="Persons:"
           type="number"
           v-model="newRecipe.people"
+          required
         ></ion-input>
       </ion-item>
 
@@ -23,6 +28,7 @@
           label="Minutes:"
           type="number"
           v-model="newRecipe.time"
+          required
         ></ion-input>
       </ion-item>
 
@@ -32,6 +38,7 @@
           label="Minutes:"
           v-model="newRecipe.category"
           placeholder="Select category"
+          required
         >
           <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
           <ion-select-option value="lunch">Lunch</ion-select-option>
@@ -144,36 +151,6 @@ const handleChange = (event: any) => {
 </script>
 
 <style lang="css" scoped>
-.inputGroup,
-textarea {
-  background-color: var(--card-color);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius-m);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  width: 100%;
-  border: none;
-  gap: 0.5rem;
-  outline: transparent;
-  resize: vertical;
-}
-.field {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.material-symbols-outlined {
-  color: var(--primary-color);
-}
-input {
-  outline: transparent;
-  border: none;
-  border-bottom: 1px solid var(--background-color);
-  text-align: end;
-  width: 100%;
-}
 #fileInput {
   display: none;
 }

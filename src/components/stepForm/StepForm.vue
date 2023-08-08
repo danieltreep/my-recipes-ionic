@@ -41,30 +41,4 @@ form {
   display: flex;
   justify-content: space-between;
 }
-.buttons button {
-  padding: 0.6rem 0.8rem;
-  border-radius: var(--border-radius-m);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  background-color: var(--background-color);
-}
-.buttons button .material-symbols-outlined {
-  font-size: 16px;
-}
-.next,
-.save {
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-.prev {
-  border: none;
-}
-.error {
-  text-align: center;
-  font-weight: 500;
-  color: red;
-  margin: 1rem;
-}
 </style>

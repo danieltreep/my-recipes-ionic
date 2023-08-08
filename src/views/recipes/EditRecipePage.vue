@@ -125,15 +125,17 @@
           </ul>
           <EditAddSteps />
         </fieldset>
-        <div class="error" v-if="error">
-          <p>U heeft nog niet alles ingevoerd</p>
-        </div>
+        <ErrorMessage message="U heeft nog niet alles ingevoerd" v-if="error" />
+
         <div class="buttons">
-          <button class="prev" @click="router.go(-1)">
-            <span class="material-symbols-outlined">close</span>
-            <!-- Afbreken -->
-          </button>
-          <button type="submit" class="save">Opslaan</button>
+          <ion-button class="prev" fill="clear" @click="router.go(-1)">
+            <ion-icon :icon="chevronBack"></ion-icon>
+            Go back
+          </ion-button>
+          <ion-button type="submit" class="next" fill="outline">
+            Save
+            <ion-icon :icon="save"></ion-icon>
+          </ion-button>
         </div>
       </form>
     </ion-content>
@@ -179,8 +181,10 @@ import {
   chevronForward,
   person,
   refresh,
+  save,
   text,
 } from "ionicons/icons";
+import ErrorMessage from "@/components/error/ErrorMessage.vue";
 
 const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore());
 const { updateRecipeImage } = useSelectedRecipeStore();
@@ -265,61 +269,6 @@ form {
   display: flex;
   justify-content: space-between;
 }
-.buttons button {
-  padding: 0.6rem 0.8rem;
-  border-radius: var(--border-radius-m);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  background-color: var(--background-color);
-}
-.buttons button .material-symbols-outlined {
-  font-size: 16px;
-}
-.save {
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-.prev {
-  border: none;
-}
-.error {
-  text-align: center;
-  font-weight: 500;
-  color: red;
-  margin: 1rem;
-}
-.inputGroup,
-textarea {
-  background-color: var(--card-color);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius-m);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  width: 100%;
-  border: none;
-  gap: 0.5rem;
-  outline: transparent;
-  resize: vertical;
-}
-.field {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.material-symbols-outlined {
-  color: var(--primary-color);
-}
-input {
-  outline: transparent;
-  border: none;
-  border-bottom: 1px solid var(--background-color);
-  text-align: end;
-  width: 100%;
-}
 #fileInput {
   display: none;
 }
@@ -371,9 +320,7 @@ ul.ingredients {
 .ingredients li:not(:last-child) {
   border-bottom: 3px solid var(--background-color);
 }
-form {
-  margin: 0;
-  padding-top: 3rem;
-  padding-bottom: calc(85px + 3rem);
+ion-item::part(native) {
+  border-radius: var(--border-radius-m);
 }
 </style>

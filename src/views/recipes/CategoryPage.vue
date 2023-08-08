@@ -1,10 +1,10 @@
 <template>
   <ion-page>
-    <ion-content>
+    <ion-content :fullscreen="true">
       <img :src="imageUrl" alt="" />
       <div class="main-content ion-padding">
         <header>
-          <ion-button @click="router.go(-1)">
+          <ion-button @click="router.go(-1)" class="ion-no-padding">
             <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
           </ion-button>
 
@@ -80,7 +80,7 @@ header {
 h1 {
   font-weight: 900;
 }
-.hero span {
+.hero ion-icon {
   color: var(--primary-color);
   font-size: 30px;
 }

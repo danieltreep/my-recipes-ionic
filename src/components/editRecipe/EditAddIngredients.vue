@@ -43,14 +43,14 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/vue";
-import { useNewRecipeStore } from "@/stores/newRecipe";
+import { add } from "ionicons/icons";
+import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
-import { add } from "ionicons/icons";
-import ErrorMessage from "../error/ErrorMessage.vue";
+import ErrorMessage from "@/components/error/ErrorMessage.vue";
 
-const { currentIngredient } = storeToRefs(useNewRecipeStore());
-const { addIngredient } = useNewRecipeStore();
+const { currentIngredient } = storeToRefs(useSelectedRecipeStore());
+const { addIngredient } = useSelectedRecipeStore();
 
 const error = ref(false);
 
@@ -66,6 +66,20 @@ const handleAddIngredient = () => {
 </script>
 
 <style lang="css" scoped>
+.addIngredient {
+  display: grid;
+  grid-template-columns: 5fr 4fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.box {
+  background-color: var(--card-color);
+  padding: 0.7rem;
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--box-shadow);
+  border: none;
+  display: flex;
+}
 input {
   width: fit-content;
   border: none;
@@ -73,7 +87,10 @@ input {
   width: 100%;
   outline: transparent;
 }
-
+.eenheid {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+}
 select {
   border: none;
   padding-right: 0.5rem;
@@ -81,8 +98,10 @@ select {
   outline: transparent;
   width: 100%;
 }
-
-ion-select {
-  margin-left: auto;
+.add {
+  border: 1px solid var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
 </style>

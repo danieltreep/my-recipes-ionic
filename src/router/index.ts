@@ -6,45 +6,42 @@ import LoginPage from "../views/auth/LoginPage.vue";
 // Route guard
 import { auth } from "@/firebase/config";
 
-// const requireAuth = (to: any, from: any, next: Function) => {
-//   let user = auth.currentUser;
-//   if (!user) {
-//     next({ name: "Login" });
-//   } else {
-//     next();
-//   }
-// };
+const requireAuth = (to: any, from: any, next: Function) => {
+  let user = auth.currentUser;
+  if (!user) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
+};
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: TabsView,
+    beforeEnter: requireAuth,
     children: [
       {
         path: "recipes",
         name: "Recipes",
         component: () => import("@/views/recipes/RecipesPage.vue"),
-        // beforeEnter: requireAuth,
       },
       {
         path: "recipes/:category",
         name: "Category",
         component: () => import("@/views/recipes/CategoryPage.vue"),
-        // beforeEnter: requireAuth,
         props: true,
       },
       {
         path: "recipes/:category/:id",
         name: "Recipe",
         component: () => import("@/views/recipes/RecipePage.vue"),
-        // beforeEnter: requireAuth,
         props: true,
       },
       {
         path: "recipes/edit",
         name: "Edit",
         component: () => import("@/views/recipes/EditRecipePage.vue"),
-        // beforeEnter: requireAuth
       },
       {
         path: "account",

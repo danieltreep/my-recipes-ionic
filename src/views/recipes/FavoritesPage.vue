@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonIcon, IonContent } from "@ionic/vue";
+import { IonPage, IonIcon, IonContent, onIonViewWillEnter } from "@ionic/vue";
 import RecipeList from "@/components/recipes/RecipeList.vue";
 import { useRecipesStore } from "@/stores/recipes";
 import { storeToRefs } from "pinia";
@@ -39,7 +39,7 @@ import { heart } from "ionicons/icons";
 const { favorites } = storeToRefs(useRecipesStore());
 const { fetchRecipes } = useRecipesStore();
 
-onMounted(async () => {
+onIonViewWillEnter(async () => {
   await fetchRecipes();
 });
 </script>

@@ -91,7 +91,7 @@ const handleSubmit = async () => {
     // Add document with the value from newRecipe store
     const recipeId = await addDocument(newRecipe.value);
 
-    // Reset steps and go to newly added recipe page
+    // // Reset steps and go to newly added recipe page
     router.push({
       name: "Recipe",
       params: { category: newRecipe.value.category, id: recipeId },

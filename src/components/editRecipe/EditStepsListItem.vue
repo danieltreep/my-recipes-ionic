@@ -29,9 +29,9 @@
 
 <script setup lang="ts">
 import { IonIcon, IonTextarea } from "@ionic/vue";
-import { ref } from "vue";
-import { useNewRecipeStore } from "@/stores/newRecipe";
 import { pencil, save } from "ionicons/icons";
+import { ref } from "vue";
+import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 
 const props = defineProps<{
   step: string;
@@ -45,7 +45,7 @@ const editStep = ref(props.step.valueOf());
 // Show save icon and textarea if true
 const edit = ref(false);
 
-const { updateStep } = useNewRecipeStore();
+const { updateStep } = useSelectedRecipeStore();
 
 const handleEdit = () => {
   edit.value = false;

@@ -35,10 +35,15 @@ import {
   IonTabBar,
   IonTabButton,
   IonLabel,
-  IonIcon
-} from '@ionic/vue'
+  IonIcon,
+} from "@ionic/vue";
 
-import { personCircleOutline, addCircleOutline, heartOutline, bookOutline } from 'ionicons/icons'
+import {
+  personCircleOutline,
+  addCircleOutline,
+  heartOutline,
+  bookOutline,
+} from "ionicons/icons";
 </script>
 
 <style lang="css" scoped>

@@ -3,23 +3,27 @@ import { db } from "@/firebase/config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import getUser from "../auth/getUser";
 import type { Recipe } from "@/types/Recipe";
+import { auth } from "@/firebase/config";
 
-const {user}: any = getUser()
+const { user }: any = getUser();
 
 const getRecipes = async () => {
-    const documents = ref<Recipe[]>([])
-    const error = ref(null)
-    let results: Array<any> = []    
-    
-    const querySnapshot = await getDocs(collection(db, "users", user.value.uid, 'recipes'))
-    querySnapshot.forEach(doc => {
-        results.push({ ...doc.data(), id: doc.id})
-    })
+  const documents = ref<Recipe[]>([]);
+  const error = ref(null);
+  let results: Array<any> = [];
 
-    documents.value = results
-    error.value = null
+  const querySnapshot = await getDocs(
+    collection(db, "users", auth.currentUser!.uid, "recipes")
+  );
 
-    return { documents, error }
-}
+  querySnapshot.forEach((doc) => {
+    results.push({ ...doc.data(), id: doc.id });
+  });
 
-export default getRecipes
+  documents.value = results;
+  error.value = null;
+
+  return { documents, error };
+};
+
+export default getRecipes;

@@ -12,26 +12,6 @@
       </ion-item>
     </ion-content>
   </ion-popover>
-  <div class="options">
-    <div
-      @click="$emit('delete')"
-      @keydown.enter="$emit('delete')"
-      class="option"
-      tabindex="0"
-    >
-      <ion-icon :icon="trashBin"></ion-icon>
-      <p>Verwijderen</p>
-    </div>
-    <div
-      class="option"
-      @click="handleEdit"
-      @keydown.enter="handleEdit"
-      tabindex="0"
-    >
-      <ion-icon :icon="pencil"></ion-icon>
-      <p>Aanpassen</p>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">

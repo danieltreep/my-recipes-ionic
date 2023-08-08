@@ -1,15 +1,17 @@
 <template>
   <ion-page class="ion-padding">
-    <header>
-      <h3>Nieuw recept</h3>
-      <StepIndicators />
-    </header>
-    <StepForm />
+    <ion-content>
+      <header>
+        <h3>Nieuw recept</h3>
+        <StepIndicators />
+      </header>
+      <StepForm />
+    </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage } from "@ionic/vue";
+import { IonPage, IonContent } from "@ionic/vue";
 import StepForm from "@/components/stepForm/StepForm.vue";
 import StepIndicators from "@/components/stepForm/StepIndicators.vue";
 </script>

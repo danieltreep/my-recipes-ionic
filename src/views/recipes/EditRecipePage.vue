@@ -1,182 +1,243 @@
 <template>
-  <!-- <form @submit.prevent="handleSubmit" class="page">
-
+  <ion-page>
+    <ion-content class="ion-padding">
+      <form @submit.prevent="handleSubmit" class="page">
         <h3>Recept aanpassen</h3>
         <fieldset>
-            <legend>Informatie</legend>
-            <div class="inputGroup">
-                <div class="field">
-                    <span class="material-symbols-outlined">title</span>
-                    <label for="people">Titel:</label>
-                </div>
-                <input type="text" id="people" v-model="selectedRecipe.title" required>
-            </div>
-            <div class="inputGroup">
-                <div class="field">
-                    <span class="material-symbols-outlined">person</span>
-                    <label for="people">Aantal personen:</label>
-                </div>
-                <input type="number" id="people" v-model="selectedRecipe.people" required>
-            </div>
-            <div class="inputGroup">
-                <div class="field">
-                    <span class="material-symbols-outlined">schedule</span>
-                    <label for="people">Aantal minuten:</label>
-                </div>
-                <input type="number" id="people" v-model="selectedRecipe.time" required>
-            </div>
-            <div class="inputGroup">
-                <div class="field">
-                    <span class="material-symbols-outlined">room_service</span>
-                    <label for="people">Categorie</label>
-                </div>
-                <select v-model="selectedRecipe.category" required>
-                    <option disabled selected>Selecteer</option>
-                    <option value="ontbijt">Ontbijt</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="hoofdgerecht" >Hoofdgerecht</option>
-                    <option value="voorgerecht">Voorgerecht</option>
-                    <option value="desserts">Desserts</option>
-                    <option value="bijgerecht">Bijgerecht</option>
-                    <option value="tussendoor">Tussendoor</option>
-                    <option value="drinken">Drinken</option>
-                </select>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Beschrijving (optioneel)</legend>
-            <textarea placeholder="Beschrijving" rows="4" v-model="selectedRecipe.description"></textarea>
-        </fieldset> -->
-  <!-- <fieldset>
-            <legend>Tags</legend>
-        </fieldset> -->
-  <!-- <fieldset>
-            <legend>Afbeelding (optioneel)</legend>
-            <div class="image box" v-if="selectedRecipe.imageUrl">
-                <img :src="selectedRecipe.imageUrl" >
-            </div> -->
-  <!-- <div class="image box" v-if="imageUrl">
-                <img :src="imageUrl" >
-            </div> -->
-  <!-- <div class="addImage">
-                <label for="fileInput" class="fileLabel">
-                    <span class="material-symbols-outlined">add_photo_alternate</span>
-                    
-                    <p>Voeg een afbeelding toe</p>
-                </label>
-                <input id="fileInput" type="file" accept="image/jpeg, image/png" @change="handleChange">
-            </div>
-        </fieldset> -->
+          <legend>Informatie</legend>
+          <ion-item lines="none">
+            <ion-icon :icon="text" slot="start"></ion-icon>
+            <ion-input
+              label="Title:"
+              v-model="selectedRecipe.title"
+            ></ion-input>
+          </ion-item>
 
-  <!-- <fieldset>
-            <legend>Ingredienten</legend> -->
-  <!-- <IngredientsList :ingredients="selectedRecipe.ingredients" :edit="true"/> -->
-  <!-- <ul class="ingredients">
-                <EditIngredientsListItem 
-                    v-for="(ingredient, index) in selectedRecipe.ingredients" 
-                    :key="index" 
-                    :index="index" 
-                    :ingredient="ingredient"
-                    :edit="true"
-                />
-            </ul>
-            <EditAddIngredients />
+          <ion-item lines="none">
+            <ion-icon :icon="person" slot="start"></ion-icon>
+            <ion-input
+              label="Persons:"
+              type="number"
+              v-model="selectedRecipe.people"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-icon :icon="alarm" slot="start"></ion-icon>
+            <ion-input
+              label="Minutes:"
+              type="number"
+              v-model="selectedRecipe.time"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-icon :icon="alarm" slot="start"> </ion-icon>
+            <ion-select
+              label="Minutes:"
+              v-model="selectedRecipe.category"
+              placeholder="Select category"
+            >
+              <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
+              <ion-select-option value="lunch">Lunch</ion-select-option>
+              <ion-select-option value="hoofdgerecht"
+                >Hoofdgerecht</ion-select-option
+              >
+              <ion-select-option value="voorgerecht"
+                >Voorgerecht</ion-select-option
+              >
+              <ion-select-option value="desserts">Desserts</ion-select-option>
+              <ion-select-option value="bijgerecht"
+                >Bijgerecht</ion-select-option
+              >
+              <ion-select-option value="tussendoor"
+                >Tussendoor</ion-select-option
+              >
+              <ion-select-option value="drinken">Drinken</ion-select-option>
+            </ion-select>
+          </ion-item>
         </fieldset>
-        
         <fieldset>
-            <legend>Stappen</legend>
-            <ul class="steps">
-                <EditStepsListItem 
-                    v-for="(step, index) in selectedRecipe.steps" 
-                    :key="index" 
-                    :step="step"
-                    :index="index"
-                    :show-edit="true"
-                />
-                </ul>
-                <EditAddSteps />
-            </fieldset>
-            <div class="error" v-if="error">
-                <p>U heeft nog niet alles ingevoerd</p>
-            </div>
-            <div class="buttons">
-                <button class="prev" @click="router.go(-1)"> -->
-  <!-- <span class="material-symbols-outlined">close</span> -->
-  <!-- Afbreken -->
-  <!-- </button>
-                <button type="submit" class="save">Opslaan</button>
-            </div>
-    </form> -->
-  <div>hi</div>
+          <legend>Beschrijving (optioneel)</legend>
+          <ion-item lines="none">
+            <ion-textarea
+              placeholder="Description"
+              v-model="selectedRecipe.description"
+              :auto-grow="true"
+            ></ion-textarea>
+          </ion-item>
+        </fieldset>
+        <!-- <fieldset>
+            <legend>Tags</legend>
+          </fieldset> -->
+        <fieldset>
+          <legend>Afbeelding (optioneel)</legend>
+          <div class="image box" v-if="selectedRecipe.imageUrl">
+            <img :src="selectedRecipe.imageUrl" />
+          </div>
+          <div class="addImage">
+            <label for="fileInput" class="fileLabel" tabindex="0">
+              <ion-icon :icon="cameraOutline"></ion-icon>
+              <p>Voeg een afbeelding toe</p>
+            </label>
+            <label
+              class="fileLabel"
+              v-if="selectedRecipe.imageUrl"
+              @click.prevent="selectedRecipe.imageUrl = ''"
+            >
+              <ion-icon :icon="refresh"></ion-icon>
+              <p>Reset</p>
+            </label>
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/jpeg, image/png"
+              @change="handleChange"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Ingredienten</legend>
+
+          <ul class="ingredients">
+            <EditIngredientsListItem
+              v-for="(ingredient, index) in selectedRecipe.ingredients"
+              :key="index"
+              :index="index"
+              :ingredient="ingredient"
+              :edit="true"
+            />
+          </ul>
+          <EditAddIngredients />
+        </fieldset>
+
+        <fieldset>
+          <legend>Stappen</legend>
+          <ul class="steps">
+            <EditStepsListItem
+              v-for="(step, index) in selectedRecipe.steps"
+              :key="index"
+              :step="step"
+              :index="index"
+              :show-edit="true"
+            />
+          </ul>
+          <EditAddSteps />
+        </fieldset>
+        <div class="error" v-if="error">
+          <p>U heeft nog niet alles ingevoerd</p>
+        </div>
+        <div class="buttons">
+          <button class="prev" @click="router.go(-1)">
+            <span class="material-symbols-outlined">close</span>
+            <!-- Afbreken -->
+          </button>
+          <button type="submit" class="save">Opslaan</button>
+        </div>
+      </form>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script setup lang="ts">
 // External
-// import { storeToRefs } from 'pinia';
-// import { ref } from 'vue';
-// import { useRouter } from 'vue-router';
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 // // Composables
-// import useUpdateDocument from '@/composables/recipes/updateDocument'
-// import useStorage from '@/composables/recipes/useStorage'
+import useUpdateDocument from "@/composables/recipes/updateDocument";
+import useStorage from "@/composables/recipes/useStorage";
 
 // // Components
-// import EditIngredientsListItem from '@/components/editRecipe/EditIngredientListItem.vue';
-// import EditAddIngredients from '@/components/editRecipe/EditAddIngredients.vue';
-// import EditStepsListItem from '@/components/editRecipe/EditStepsListItem.vue';
-// import EditAddSteps from '@/components/editRecipe/EditAddSteps.vue';
+import EditIngredientsListItem from "@/components/editRecipe/EditIngredientListItem.vue";
+import EditAddIngredients from "@/components/editRecipe/EditAddIngredients.vue";
+import EditStepsListItem from "@/components/editRecipe/EditStepsListItem.vue";
+import EditAddSteps from "@/components/editRecipe/EditAddSteps.vue";
 
 // // Stores
-// import { useNewRecipeStore } from '@/stores/newRecipe';
-// import { useSelectedRecipeStore } from '@/stores/currentRecipe'
+import { useNewRecipeStore } from "@/stores/newRecipe";
+import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 
-// const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore())
-// const { updateRecipeImage } = useSelectedRecipeStore()
-// const { selectedRecipe, selectedRecipeImage } = storeToRefs(useSelectedRecipeStore())
-// const { updateDocument } = useUpdateDocument('recipes')
-// const { filePath, url, uploadImage } = useStorage()
+import {
+  IonInput,
+  IonPage,
+  IonIcon,
+  IonItem,
+  IonContent,
+  IonSelect,
+  IonSelectOption,
+  IonButton,
+  IonTextarea,
+} from "@ionic/vue";
 
-// const imageUrl = ref('')
-// const file = ref(null)
-// const router = useRouter()
-// const error = ref(false)
+import {
+  alarm,
+  cameraOutline,
+  chevronBack,
+  chevronForward,
+  person,
+  refresh,
+  text,
+} from "ionicons/icons";
 
-// const handleChange = (event: any) => {
-//     const selected = event.target.files[0]
+const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore());
+const { updateRecipeImage } = useSelectedRecipeStore();
+const { selectedRecipe, selectedRecipeImage } = storeToRefs(
+  useSelectedRecipeStore()
+);
+const { updateDocument } = useUpdateDocument("recipes");
+const { filePath, url, uploadImage } = useStorage();
 
-//     if (selected) {
-//         selectedRecipe.value.imageUrl = URL.createObjectURL(event.target.files[0])
-//         updateRecipeImage(selected)
-//     } else {
-//         file.value = null
-//         imageUrl.value = ''
-//     }
-// }
+const imageUrl = ref("");
+const file = ref(null);
+const router = useRouter();
+const error = ref(false);
 
-// const handleSubmit = async () => {
+const handleChange = (event: any) => {
+  const selected = event.target.files[0];
 
-//     // Show error if there are no errors
-//     if (!selectedRecipe.value.steps.length || !selectedRecipe.value.ingredients.length) {
-//         error.value = true
-//         return
-//     } else {
+  if (selected) {
+    selectedRecipe.value.imageUrl = URL.createObjectURL(event.target.files[0]);
+    updateRecipeImage(selected);
+  } else {
+    file.value = null;
+    imageUrl.value = "";
+  }
+};
 
-//         // Check if there is an image in store, if so upload it.
-//         if (selectedRecipeImage.value) {
-//             await uploadImage(selectedRecipeImage.value)
+const handleSubmit = async () => {
+  // Show error if there are no steps or ingredients
+  if (
+    !selectedRecipe.value.steps.length ||
+    !selectedRecipe.value.ingredients.length
+  ) {
+    error.value = true;
+    return;
+  } else {
+    // Check if there is an image in store, if so upload it.
+    if (selectedRecipeImage.value) {
+      await uploadImage(selectedRecipeImage.value);
 
-//             // Update the new recipe with the returned filePath and url refs
-//             selectedRecipe.value.filePath = filePath.value
-//             selectedRecipe.value.imageUrl = url.value
-//         }
+      // Update the new recipe with the returned filePath and url refs
+      selectedRecipe.value.filePath = filePath.value;
+      selectedRecipe.value.imageUrl = url.value;
+    }
 
-//         // Add document with the value from newRecipe store
-//         await updateDocument(selectedRecipe.value)
+    // Add document with the value from newRecipe store
+    await updateDocument(selectedRecipe.value);
 
-//         // Reset steps and go to newly added recipe page
-//         router.push({name: 'Recipe', params: {category: selectedRecipe.value.category, id: selectedRecipe.value.id}})
-//     }
-// }
+    // Reset steps and go to newly added recipe page
+    router.push({
+      name: "Recipe",
+      params: {
+        category: selectedRecipe.value.category,
+        id: selectedRecipe.value.id,
+      },
+    });
+  }
+};
 </script>
 
 <style lang="css" scoped>

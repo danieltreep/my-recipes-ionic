@@ -10,10 +10,10 @@
 
 <script setup lang="ts">
 // Ionic
-import { IonPage, IonContent } from "@ionic/vue";
+import { IonPage, IonContent, onIonViewWillEnter } from "@ionic/vue";
 
 // External
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 // Components
 import CategoryList from "@/components/categories/CategoryList.vue";
@@ -22,7 +22,6 @@ import SearchList from "@/components/recipes/SearchList.vue";
 
 // Stores
 import { useRecipesStore } from "@/stores/recipes";
-
 import { useSearchStore } from "@/stores/search";
 import { storeToRefs } from "pinia";
 
@@ -30,7 +29,7 @@ const { searchTerm } = storeToRefs(useSearchStore());
 
 const { fetchRecipes } = useRecipesStore();
 
-onMounted(async () => {
+onIonViewWillEnter(async () => {
   await fetchRecipes();
 });
 </script>

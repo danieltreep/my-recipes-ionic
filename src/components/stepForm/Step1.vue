@@ -70,7 +70,6 @@
           <p>Voeg een afbeelding toe</p>
         </label>
         <label class="fileLabel" v-if="imageUrl" @click.prevent="imageUrl = ''">
-          <span class="material-symbols-outlined">refresh</span>
           <ion-icon :icon="refresh"></ion-icon>
           <p>Reset</p>
         </label>

@@ -54,15 +54,15 @@
         :ingredients="recipe.ingredients"
         :edit="false"
       />
-      <!-- <ul v-show="tab === 's'">
-              <StepsListItemVue
-                v-for="(step, index) in recipe.steps"
-                :key="index"
-                :step="step"
-                :index="index"
-                :show-edit="false"
-              />
-            </ul> -->
+      <ul v-show="tab === 's'">
+        <StepsListItemVue
+          v-for="(step, index) in recipe.steps"
+          :key="index"
+          :step="step"
+          :index="index"
+          :show-edit="false"
+        />
+      </ul>
     </div>
   </div>
 </template>
@@ -72,7 +72,7 @@ import { IonPage, IonIcon } from "@ionic/vue";
 import { ref } from "vue";
 import type { Recipe } from "@/types/Recipe";
 import IngredientsList from "@/components/ingredients/IngredientsList.vue";
-// import StepsListItemVue from "../stepForm/StepsListItem.vue";
+import StepsListItemVue from "../stepForm/StepsListItem.vue";
 import { storeToRefs } from "pinia";
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import type { Ingredient } from "@/types/Ingredient";

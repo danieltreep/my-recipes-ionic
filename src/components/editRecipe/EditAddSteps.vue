@@ -18,10 +18,10 @@
 <script setup lang="ts">
 import { IonTextarea, IonItem, IonButton } from "@ionic/vue";
 import { ref } from "vue";
-import { useNewRecipeStore } from "@/stores/newRecipe";
+import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import ErrorMessage from "../error/ErrorMessage.vue";
 
-const { addStep } = useNewRecipeStore();
+const { addStep } = useSelectedRecipeStore();
 
 const step = ref("");
 const error = ref(false);

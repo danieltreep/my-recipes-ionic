@@ -5,6 +5,9 @@ import router from "./router";
 import { createPinia } from "pinia";
 import { IonicVue } from "@ionic/vue";
 
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/config";
+
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/vue/css/core.css";
 
@@ -26,8 +29,16 @@ import "./theme/variables.css";
 
 const pinia = createPinia();
 
-const app = createApp(App).use(IonicVue).use(router).use(pinia);
+// Wait for connection with firebase to run the app, this prevents refresh bugs
+let app: any;
 
-router.isReady().then(() => {
-  app.mount("#app");
+onAuthStateChanged(auth, () => {
+  // Assign to app so it will only run once and not on every state change
+  if (!app) {
+    app = createApp(App).use(IonicVue).use(router).use(pinia);
+
+    router.isReady().then(() => {
+      app.mount("#app");
+    });
+  }
 });

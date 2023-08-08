@@ -1,60 +1,62 @@
 <template>
   <ion-page>
-    <img :src="imageUrl" alt="" />
-    <div class="page ion-padding">
-      <header>
-        <ion-button @click="router.go(-1)" @keydown.enter="router.go(-1)">
-          <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-button
-          class="fav"
-          @click="handleFav"
-          @keydown.enter="handleFav"
-          v-if="!selectedRecipe.favorite"
-        >
-          <ion-icon :icon="heartOutline" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-button
-          @click="handleFav"
-          @keydown.enter="handleFav"
-          v-if="selectedRecipe.favorite"
-          class="fav"
-        >
-          <ion-icon :icon="heart" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-button
-          id="options-trigger"
-          @click="showOptions = !showOptions"
-          @keydown.enter="showOptions = !showOptions"
-          slot="icon-only"
-        >
-          <ion-icon :icon="ellipsisVertical" id="options-trigger"></ion-icon>
-        </ion-button>
-        <ion-popover trigger="options-trigger" trigger-action="click">
-          <ion-content class="ion-padding">
-            <ion-item
-              @click="$emit('delete')"
-              @keydown.enter="$emit('delete')"
-              class="option"
-              tabindex="0"
-            >
-              <ion-icon :icon="trashBin"></ion-icon>
-              <p>Verwijderen</p>
-            </ion-item>
-            <ion-item
-              class="option"
-              @click="handleEdit"
-              @keydown.enter="handleEdit"
-              tabindex="0"
-            >
-              <ion-icon :icon="pencil"></ion-icon>
-              <p>Aanpassen</p>
-            </ion-item>
-          </ion-content>
-        </ion-popover>
-      </header>
-      <SingleRecipe :recipe="selectedRecipe" v-if="selectedRecipe" />
-    </div>
+    <ion-content>
+      <img :src="imageUrl" alt="" />
+      <div class="page ion-padding">
+        <header>
+          <ion-button @click="router.go(-1)" @keydown.enter="router.go(-1)">
+            <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button
+            class="fav"
+            @click="handleFav"
+            @keydown.enter="handleFav"
+            v-if="!selectedRecipe.favorite"
+          >
+            <ion-icon :icon="heartOutline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button
+            @click="handleFav"
+            @keydown.enter="handleFav"
+            v-if="selectedRecipe.favorite"
+            class="fav"
+          >
+            <ion-icon :icon="heart" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button
+            id="options-trigger"
+            @click="showOptions = !showOptions"
+            @keydown.enter="showOptions = !showOptions"
+            slot="icon-only"
+          >
+            <ion-icon :icon="ellipsisVertical" id="options-trigger"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="options-trigger" trigger-action="click">
+            <ion-content class="ion-padding">
+              <ion-item
+                @click="handleDelete"
+                @keydown.enter="handleDelete"
+                class="option"
+                tabindex="0"
+              >
+                <ion-icon :icon="trashBin"></ion-icon>
+                <p>Verwijderen</p>
+              </ion-item>
+              <ion-item
+                class="option"
+                @click="handleEdit"
+                @keydown.enter="handleEdit"
+                tabindex="0"
+              >
+                <ion-icon :icon="pencil"></ion-icon>
+                <p>Aanpassen</p>
+              </ion-item>
+            </ion-content>
+          </ion-popover>
+        </header>
+        <SingleRecipe :recipe="selectedRecipe" v-if="selectedRecipe" />
+      </div>
+    </ion-content>
   </ion-page>
 </template>
 
@@ -66,11 +68,11 @@ import {
   IonContent,
   IonItem,
   IonPopover,
+  onIonViewWillEnter,
 } from "@ionic/vue";
 import getDocument from "@/composables/recipes/getDocument";
 import setFavorite from "@/composables/recipes/setFavorite";
 import SingleRecipe from "@/components/recipes/SingleRecipe.vue";
-import RecipeOptions from "@/components/recipes/RecipeOptions.vue";
 
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import { ref, onMounted } from "vue";
@@ -89,8 +91,7 @@ import {
 } from "ionicons/icons";
 
 const { selectedRecipe } = storeToRefs(useSelectedRecipeStore());
-
-const showOptions = ref(false);
+const { fetchRecipes } = useRecipesStore();
 
 const props = defineProps<{
   id: string;
@@ -99,7 +100,7 @@ const props = defineProps<{
 // Store image url
 const imageUrl = ref("");
 
-onMounted(async () => {
+onIonViewWillEnter(async () => {
   await getDocument(props.id);
 
   if (selectedRecipe.value.imageUrl) {
@@ -127,6 +128,7 @@ const handleEdit = () => {
 const handleDelete = async () => {
   console.log("deleted");
   await useDeleteDocument(selectedRecipe.value.id);
+  await fetchRecipes();
   router.push({ name: "Recipes" });
 };
 </script>

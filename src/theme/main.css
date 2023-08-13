@@ -22,20 +22,11 @@
   --border-radius-m: 8px;
   --border-radius-l: 25px;
 }
-html {
-  background-color: black;
-}
 
 #app {
   background-color: var(--background-color);
-  max-width: 450px;
-  min-height: 100svh;
-  margin: 0 auto;
 }
 
-a {
-  text-decoration: none;
-}
 img {
   width: 100%;
 }

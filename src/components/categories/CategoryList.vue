@@ -28,7 +28,6 @@ const categories = ref<Array<string>>([
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 10px;
-  /* max-width: 100%; */
+  gap: 10px 5px;
 }
 </style>

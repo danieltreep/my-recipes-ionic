@@ -138,6 +138,7 @@ const handleIncrement = () => {
 }
 h1 {
   font-size: 28px;
+  margin: 0;
 }
 .description {
   font-size: 14px;

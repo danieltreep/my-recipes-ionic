@@ -63,7 +63,7 @@ import AddSteps from "./AddSteps.vue";
 import { chevronBack, chevronForward } from "ionicons/icons";
 
 // Functions
-const { addDocument, isPending } = useCollection("recipes");
+const { addDocument, isPending } = useCollection();
 const { resetRecipe } = useNewRecipeStore();
 const { decrement, resetStep } = useStepStore();
 const { filePath, url, uploadImage } = useStorage();
@@ -105,11 +105,6 @@ const handleSubmit = async () => {
 <style lang="css" scoped>
 ul {
   padding-left: 0;
-}
-li {
-  background-color: var(--card-color);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius-m);
 }
 
 li:not(:last-child) {

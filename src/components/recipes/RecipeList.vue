@@ -6,10 +6,9 @@
       :recipe="recipe"
     />
   </div>
-  <!-- <div v-else>
-        <RecipeListSuspense v-if="empty"/>
-        <NoRecipesVue v-if="!empty"/>
-    </div> -->
+  <div v-else>
+    <NoRecipesVue />
+  </div>
 </template>
 
 <script setup lang="ts">

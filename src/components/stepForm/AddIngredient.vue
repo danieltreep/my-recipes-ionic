@@ -1,5 +1,5 @@
 <template>
-  <ion-item-group>
+  <ul>
     <ion-item>
       <ion-input
         v-model="currentIngredient.name"
@@ -7,7 +7,7 @@
         placeholder="Ingredient"
       ></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
         v-model="currentIngredient.amount"
         type="number"
@@ -25,12 +25,12 @@
         <ion-select-option value="el">el</ion-select-option>
         <ion-select-option value="tl">tl</ion-select-option>
       </ion-select>
-      <ion-button @click.prevent="handleAddIngredient">
+      <ion-button @click.prevent="handleAddIngredient" fill="outline">
         <ion-icon :icon="add" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
-    <ErrorMessage message="Voer een ingredient in" v-if="error" />
-  </ion-item-group>
+  </ul>
+  <ErrorMessage message="Voer een ingredient in" v-if="error" />
 </template>
 
 <script setup lang="ts">
@@ -84,5 +84,12 @@ select {
 
 ion-select {
   margin-left: auto;
+}
+ul {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--element-box-shadow);
+}
+ion-button {
 }
 </style>

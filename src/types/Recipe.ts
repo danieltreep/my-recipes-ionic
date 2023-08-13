@@ -2,8 +2,8 @@ import type { Ingredient } from "./Ingredient";
 
 export interface Recipe {
   title: string;
-  people: number;
-  time: number;
+  people: number | null;
+  time: number | null;
   category: string;
   description?: string;
   ingredients: Array<Ingredient>;

@@ -41,4 +41,10 @@ form {
   display: flex;
   justify-content: space-between;
 }
+ion-item {
+  box-shadow: var(--element-box-shadow);
+}
+ion-button {
+  --border-radius: var(--border-radius-m);
+}
 </style>

@@ -9,7 +9,10 @@
           </ion-button>
 
           <div class="hero">
-            <ion-icon :icon="restaurant" size="large"></ion-icon>
+            <ion-icon
+              src="/src/assets/icons/room_service.svg"
+              size="large"
+            ></ion-icon>
             <h1>
               {{ category.charAt(0).toUpperCase() }}{{ category.slice(1) }}
             </h1>
@@ -29,8 +32,10 @@
 
         <RecipeList
           :recipes="categoryRecipes(category)"
-          v-if="categoryRecipes"
+          v-if="categoryRecipes(category)"
         />
+
+        <h2 v-else>You don't have any recipes in this category</h2>
       </div>
     </ion-content>
   </ion-page>
@@ -79,10 +84,11 @@ header {
 }
 h1 {
   font-weight: 900;
+  margin-top: 0;
 }
 .hero ion-icon {
   color: var(--primary-color);
-  font-size: 30px;
+  /* font-size: 30px; */
 }
 ion-button {
   --background: transparent;

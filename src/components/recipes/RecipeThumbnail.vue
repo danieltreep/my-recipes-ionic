@@ -17,12 +17,12 @@
       </p>
       <div class="details">
         <div class="time">
-          <ion-icon :icon="alarmOutline"></ion-icon>
+          <ion-icon :icon="timeOutline"></ion-icon>
 
           <p>{{ recipe.time }} min</p>
         </div>
         <div class="time">
-          <ion-icon :icon="person"></ion-icon>
+          <ion-icon :icon="personOutline"></ion-icon>
           <p>{{ recipe.people }} personen</p>
         </div>
       </div>
@@ -34,7 +34,7 @@
 import { IonCard, IonIcon } from "@ionic/vue";
 import type { Recipe } from "@/types/Recipe";
 import { ref, onMounted } from "vue";
-import { alarmOutline, person } from "ionicons/icons";
+import { timeOutline, personOutline } from "ionicons/icons";
 
 const props = defineProps<{
   recipe: Recipe;
@@ -118,5 +118,8 @@ a {
 .details {
   display: flex;
   gap: 0.5rem;
+}
+ion-icon {
+  color: var(--primary-color);
 }
 </style>

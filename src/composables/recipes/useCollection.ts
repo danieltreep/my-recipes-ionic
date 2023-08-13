@@ -5,7 +5,7 @@ import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import type { Recipe } from "@/types/Recipe";
 import { auth } from "@/firebase/config";
 
-const useCollection = (col: string) => {
+const useCollection = () => {
   const error = ref(null);
   const isPending = ref<boolean>(false);
 
@@ -14,14 +14,15 @@ const useCollection = (col: string) => {
     isPending.value = true;
 
     try {
+      console.log(document);
       const response = await addDoc(
-        collection(db, "users", auth.currentUser!.uid, col),
+        collection(db, "users", auth.currentUser!.uid, "recipes"),
         document
       );
 
       // Immediately add document id
       await updateDoc(
-        doc(db, "users", auth.currentUser!.uid, col, response.id),
+        doc(db, "users", auth.currentUser!.uid, "recipes", response.id),
         {
           ...document,
           id: response.id,

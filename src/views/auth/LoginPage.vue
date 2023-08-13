@@ -88,6 +88,7 @@ ion-input {
   --color: white;
   --placeholder-color: #ddd;
   --highlight-color-focused: black;
+  text-align: start;
 }
 ion-item {
   --background: #ffffff15;

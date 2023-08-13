@@ -1,6 +1,6 @@
 <template>
-  <ion-page class="ion-padding">
-    <ion-content>
+  <ion-page>
+    <ion-content class="ion-padding">
       <header>
         <h3>Nieuw recept</h3>
         <StepIndicators />

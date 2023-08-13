@@ -5,15 +5,14 @@
         v-if="edit"
         @click.prevent="handleDelete(index)"
         @keydown.enter="handleDelete(index)"
-        :icon="trashBin"
+        :icon="closeCircleOutline"
         size="small"
       ></ion-icon>
 
       <ion-checkbox
         v-if="!edit"
         class="material-symbols-outlined"
-        @click.prevent="handleCheck()"
-        @keydown.enter="handleCheck()"
+        @ionChange="handleCheck()"
       ></ion-checkbox>
       <p>
         {{ ingredient.name.charAt(0).toUpperCase()
@@ -32,7 +31,7 @@ import { IonCheckbox, IonIcon, IonButton } from "@ionic/vue";
 import type { Ingredient } from "@/types/Ingredient";
 import { useNewRecipeStore } from "@/stores/newRecipe";
 import { ref } from "vue";
-import { trashBin } from "ionicons/icons";
+import { closeCircleOutline } from "ionicons/icons";
 
 const { deleteIngredient } = useNewRecipeStore();
 const checked = ref(false);
@@ -72,10 +71,7 @@ li {
   gap: 0.5rem;
   align-items: center;
 }
-.ingredient .material-symbols-outlined {
-  font-size: 16px;
-}
-.checkmark {
-  cursor: pointer;
+ion-checkbox {
+  --checkbox-background-checked: transparent;
 }
 </style>

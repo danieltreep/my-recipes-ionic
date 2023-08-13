@@ -3,14 +3,14 @@
     <div class="information">
       <div class="detailsSection">
         <div class="detail">
-          <ion-icon :icon="restaurant"></ion-icon>
+          <ion-icon src="/src/assets/icons/room_service.svg"></ion-icon>
           <p>
             {{ recipe.category.charAt(0).toUpperCase()
             }}{{ recipe.category.slice(1) }}
           </p>
         </div>
         <div class="detail">
-          <ion-icon :icon="alarmOutline"></ion-icon>
+          <ion-icon :icon="timeOutline"></ion-icon>
           <p>{{ recipe.time }} min</p>
         </div>
       </div>
@@ -34,7 +34,7 @@
                   </div> -->
 
     <div class="persons box">
-      <ion-icon :icon="personOutline"></ion-icon>
+      <ion-icon src="/src/assets/icons/person.svg"></ion-icon>
       <p>Aantal personen</p>
       <div class="counter">
         <span tabindex="0" @click="handleDecrement">-</span>
@@ -76,7 +76,7 @@ import StepsListItemVue from "../stepForm/StepsListItem.vue";
 import { storeToRefs } from "pinia";
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import type { Ingredient } from "@/types/Ingredient";
-import { alarmOutline, personOutline, restaurant } from "ionicons/icons";
+import { timeOutline, personOutline, restaurant } from "ionicons/icons";
 
 const { selectedRecipe } = storeToRefs(useSelectedRecipeStore());
 
@@ -88,27 +88,27 @@ const tab = ref<string>("i");
 
 const handleDecrement = () => {
   console.log();
-  if (selectedRecipe.value.people > 1) {
-    selectedRecipe.value.people--;
+  if (selectedRecipe.value.people! > 1) {
+    selectedRecipe.value.people!--;
 
     selectedRecipe.value.ingredients.forEach((ingredient: Ingredient) => {
       if (ingredient.amount) {
         ingredient.amount =
-          (ingredient.amount.valueOf() / (selectedRecipe.value.people + 1)) *
-          selectedRecipe.value.people;
+          (ingredient.amount.valueOf() / (selectedRecipe.value.people! + 1)) *
+          selectedRecipe.value.people!;
       }
     });
   }
 };
 
 const handleIncrement = () => {
-  selectedRecipe.value.people++;
+  selectedRecipe.value.people!++;
 
   selectedRecipe.value.ingredients.forEach((ingredient: Ingredient) => {
     if (ingredient.amount) {
       ingredient.amount =
-        (ingredient.amount.valueOf() / (selectedRecipe.value.people - 1)) *
-        selectedRecipe.value.people;
+        (ingredient.amount.valueOf() / (selectedRecipe.value.people! - 1)) *
+        selectedRecipe.value.people!;
     }
   });
 };
@@ -124,21 +124,17 @@ const handleIncrement = () => {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 12px;
+  font-size: 14px;
 }
 .detailsSection {
   margin-bottom: 0.3rem;
 }
 .detail {
-  gap: 0.3rem;
-}
-.detail .material-symbols-outlined {
-  font-size: 18px;
-  color: var(--primary-color);
+  gap: 0.2rem;
 }
 h1 {
   font-size: 28px;
-  margin: 0;
+  margin: 0 0 1rem;
 }
 .description {
   font-size: 14px;
@@ -149,6 +145,7 @@ h1 {
   align-items: center;
   gap: 0.5rem;
   margin: 2rem 0;
+  box-shadow: var(--element-box-shadow);
 }
 .persons .material-symbols-outlined {
   color: var(--primary-color);
@@ -194,5 +191,8 @@ ul {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 0.5rem;
+}
+ion-icon {
+  color: var(--primary-color);
 }
 </style>

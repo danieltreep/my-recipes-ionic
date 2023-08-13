@@ -6,7 +6,9 @@
         placeholder="Beschrijf de stap hier ..."
       ></ion-textarea>
     </ion-item>
-    <ion-button @click.prevent="handleAddStep"> Voeg stap toe </ion-button>
+    <ion-button @click.prevent="handleAddStep" fill="outline">
+      Voeg stap toe
+    </ion-button>
 
     <ErrorMessage
       message="Voer tekst in voor u de stap toevoegd"
@@ -58,5 +60,9 @@ textarea {
 button {
   width: fit-content;
   border: 1px solid var(--secondary-color);
+}
+ion-item {
+  --box-shadow: var(--element-box-shadow);
+  border-radius: var(--border-radius-m);
 }
 </style>

@@ -3,59 +3,69 @@
     <!-- <button>Volgende</button> -->
     <fieldset>
       <legend>Informatie</legend>
-      <ion-item lines="none">
-        <ion-icon :icon="text" slot="start"></ion-icon>
-        <ion-input
-          label="Title:"
-          v-model="newRecipe.title"
-          required
-        ></ion-input>
-      </ion-item>
+      <ul>
+        <ion-item lines="full">
+          <ion-icon src="/src/assets/icons/title.svg" slot="start"></ion-icon>
+          <ion-input
+            label="Title:"
+            v-model="newRecipe.title"
+            placeholder="Enter title"
+            required
+          ></ion-input>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-icon :icon="person" slot="start"></ion-icon>
-        <ion-input
-          label="Persons:"
-          type="number"
-          v-model="newRecipe.people"
-          required
-        ></ion-input>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-icon src="/src/assets/icons/person.svg" slot="start"></ion-icon>
+          <ion-input
+            label="People:"
+            type="number"
+            v-model="(newRecipe.people as number)"
+            placeholder="0"
+            required
+          ></ion-input>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-icon :icon="alarm" slot="start"></ion-icon>
-        <ion-input
-          label="Minutes:"
-          type="number"
-          v-model="newRecipe.time"
-          required
-        ></ion-input>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-icon :icon="timeOutline" slot="start"></ion-icon>
+          <ion-input
+            label="Minutes:"
+            type="number"
+            v-model="(newRecipe.time as number)"
+            placeholder="0"
+            required
+          ></ion-input>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-icon :icon="alarm" slot="start"> </ion-icon>
-        <ion-select
-          label="Minutes:"
-          v-model="newRecipe.category"
-          placeholder="Select category"
-          required
-        >
-          <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
-          <ion-select-option value="lunch">Lunch</ion-select-option>
-          <ion-select-option value="hoofdgerecht"
-            >Hoofdgerecht</ion-select-option
+        <ion-item lines="full">
+          <ion-icon
+            src="/src/assets/icons/room_service.svg"
+            slot="start"
+          ></ion-icon>
+          <ion-select
+            label="Category:"
+            v-model="newRecipe.category"
+            placeholder="Select category"
+            required
           >
-          <ion-select-option value="voorgerecht">Voorgerecht</ion-select-option>
-          <ion-select-option value="desserts">Desserts</ion-select-option>
-          <ion-select-option value="bijgerecht">Bijgerecht</ion-select-option>
-          <ion-select-option value="tussendoor">Tussendoor</ion-select-option>
-          <ion-select-option value="drinken">Drinken</ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
+            <ion-select-option value="lunch">Lunch</ion-select-option>
+            <ion-select-option value="hoofdgerecht"
+              >Hoofdgerecht</ion-select-option
+            >
+            <ion-select-option value="voorgerecht"
+              >Voorgerecht</ion-select-option
+            >
+            <ion-select-option value="desserts">Desserts</ion-select-option>
+            <ion-select-option value="bijgerecht">Bijgerecht</ion-select-option>
+            <ion-select-option value="tussendoor">Tussendoor</ion-select-option>
+            <ion-select-option value="drinken">Drinken</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ul>
     </fieldset>
     <fieldset>
       <legend>Beschrijving (optioneel)</legend>
-      <ion-item lines="none">
+      <ion-item lines="none" class="textarea">
         <ion-textarea
           placeholder="Description"
           v-model="newRecipe.description"
@@ -122,8 +132,10 @@ import {
   chevronBack,
   chevronForward,
   person,
+  personOutline,
   refresh,
   text,
+  timeOutline,
 } from "ionicons/icons";
 
 const { increment } = useStepStore();
@@ -157,12 +169,7 @@ const handleChange = (event: any) => {
 label {
   width: max-content;
 }
-select {
-  border: none;
-  text-align: end;
-  padding: 0 0.5rem;
-  outline: transparent;
-}
+
 .fileLabel {
   /* background-color: var(--card-color); */
   display: flex;
@@ -175,14 +182,15 @@ select {
   gap: 0.2rem;
   background-color: var(--card-color);
   width: fit-content;
-  box-shadow: var(--box-shadow);
-  padding: 0.5rem 0.8rem;
+  box-shadow: var(--element-box-shadow);
+  padding: 0.8rem;
 }
 .fileLabel .material-symbols-outlined {
   font-size: 20px;
 }
 .image {
   padding: 1rem;
+  box-shadow: var(--element-box-shadow);
 }
 .image img {
   border-radius: var(--border-radius-s);
@@ -192,7 +200,21 @@ select {
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-ion-item::part(native) {
+.addImage ion-icon {
+  font-size: 20px;
+}
+ul {
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--element-box-shadow);
+  overflow: hidden;
+}
+fieldset ion-icon {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+ion-button,
+.textarea {
+  --border-radius: var(--border-radius-m);
   border-radius: var(--border-radius-m);
 }
 </style>

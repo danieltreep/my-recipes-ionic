@@ -170,7 +170,9 @@ ion-list-header {
   align-items: center;
   margin-top: 2rem;
 }
-
+ion-icon {
+  color: var(--primary-color);
+}
 ion-toggle {
   --handle-width: 18px;
   --handle-height: 18px;

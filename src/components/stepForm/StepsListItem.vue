@@ -60,6 +60,7 @@ li {
   align-items: start;
   padding: 1rem;
   color: var(--font-color);
+  box-shadow: var(--element-box-shadow);
 }
 .step .material-symbols-outlined {
   font-size: 16px;

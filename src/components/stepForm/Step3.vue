@@ -35,9 +35,11 @@
         <ion-icon :icon="chevronForward"></ion-icon>
       </ion-button>
     </div>
-    <div class="error" v-if="error">
-      <p>Voeg een stap toe voordat u het recept opslaat</p>
-    </div>
+
+    <ErrorMessage
+      message="Voeg een stap toe voordat u het recept opslaat"
+      v-if="error"
+    />
   </form>
 </template>
 
@@ -61,6 +63,7 @@ import { useNewRecipeStore } from "@/stores/newRecipe";
 import StepsListItem from "./StepsListItem.vue";
 import AddSteps from "./AddSteps.vue";
 import { chevronBack, chevronForward } from "ionicons/icons";
+import ErrorMessage from "../error/ErrorMessage.vue";
 
 // Functions
 const { addDocument, isPending } = useCollection();

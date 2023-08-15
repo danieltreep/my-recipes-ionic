@@ -2,7 +2,7 @@
   <ion-page>
     <MainHeader />
     <ion-content class="ion-padding">
-      <CategoryList v-if="!searchTerm" />
+      <!-- <CategoryList v-if="!searchTerm" /> -->
       <SearchList v-if="searchTerm" />
     </ion-content>
   </ion-page>

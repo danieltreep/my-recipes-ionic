@@ -17,7 +17,7 @@
   --font-color: #464646;
   --font-light: #d9d9d9;
 
-  --element-box-shadow: 0 4px 4px 0 #00000020;
+  --element-box-shadow: 0 2px 4px 0 #00000010;
   --border-radius-s: 4px;
   --border-radius-m: 8px;
   --border-radius-l: 25px;
@@ -46,9 +46,6 @@ ul {
 }
 ion-card {
   --box-shadow: var(--element-box-shadow);
-}
-ion-content {
-  --background: var(--background-color);
 }
 ion-input {
   text-align: end;

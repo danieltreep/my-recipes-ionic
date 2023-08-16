@@ -6,7 +6,7 @@
         <fieldset>
           <legend>Informatie</legend>
           <ion-item lines="none">
-            <ion-icon :icon="text" slot="start"></ion-icon>
+            <ion-icon src="/src/assets/icons/title.svg" slot="start"></ion-icon>
             <ion-input
               label="Title:"
               v-model="selectedRecipe.title"
@@ -14,46 +14,42 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-icon :icon="person" slot="start"></ion-icon>
+            <ion-icon
+              src="/src/assets/icons/person.svg"
+              slot="start"
+            ></ion-icon>
             <ion-input
               label="Persons:"
               type="number"
-              v-model="selectedRecipe.people"
+              v-model="(selectedRecipe.people as number)"
             ></ion-input>
           </ion-item>
 
           <ion-item lines="none">
-            <ion-icon :icon="alarm" slot="start"></ion-icon>
+            <ion-icon :icon="timeOutline" slot="start"></ion-icon>
             <ion-input
               label="Minutes:"
               type="number"
-              v-model="selectedRecipe.time"
+              v-model="(selectedRecipe.time as number)"
             ></ion-input>
           </ion-item>
 
           <ion-item lines="none">
-            <ion-icon :icon="alarm" slot="start"> </ion-icon>
+            <ion-icon src="/src/assets/icons/room_service.svg" slot="start">
+            </ion-icon>
             <ion-select
-              label="Minutes:"
+              label="Category:"
               v-model="selectedRecipe.category"
               placeholder="Select category"
             >
-              <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
+              <ion-select-option value="breakfast">Breakfast</ion-select-option>
               <ion-select-option value="lunch">Lunch</ion-select-option>
-              <ion-select-option value="hoofdgerecht"
-                >Hoofdgerecht</ion-select-option
-              >
-              <ion-select-option value="voorgerecht"
-                >Voorgerecht</ion-select-option
-              >
-              <ion-select-option value="desserts">Desserts</ion-select-option>
-              <ion-select-option value="bijgerecht"
-                >Bijgerecht</ion-select-option
-              >
-              <ion-select-option value="tussendoor"
-                >Tussendoor</ion-select-option
-              >
-              <ion-select-option value="drinken">Drinken</ion-select-option>
+              <ion-select-option value="dinner">Dinner</ion-select-option>
+              <ion-select-option value="starter">Starter</ion-select-option>
+              <ion-select-option value="dessert">Dessert</ion-select-option>
+              <ion-select-option value="side">Side dish</ion-select-option>
+              <ion-select-option value="snack">Snack</ion-select-option>
+              <ion-select-option value="drink">Drink</ion-select-option>
             </ion-select>
           </ion-item>
         </fieldset>
@@ -183,6 +179,7 @@ import {
   refresh,
   save,
   text,
+  timeOutline,
 } from "ionicons/icons";
 import ErrorMessage from "@/components/error/ErrorMessage.vue";
 
@@ -322,5 +319,9 @@ ul.ingredients {
 }
 ion-item::part(native) {
   border-radius: var(--border-radius-m);
+}
+fieldset ion-icon {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
 }
 </style>

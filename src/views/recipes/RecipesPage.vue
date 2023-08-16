@@ -2,8 +2,7 @@
   <ion-page>
     <MainHeader />
     <ion-content class="ion-padding">
-      <!-- <CategoryList v-if="!searchTerm" /> -->
-      <SearchList v-if="searchTerm" />
+      <RecipeList :recipes="categoryRecipes()" />
     </ion-content>
   </ion-page>
 </template>
@@ -13,22 +12,26 @@
 import { IonPage, IonContent, onIonViewWillEnter } from "@ionic/vue";
 
 // Components
-import CategoryList from "@/components/categories/CategoryList.vue";
 import MainHeader from "@/components/MainHeader.vue";
-import SearchList from "@/components/recipes/SearchList.vue";
+import RecipeList from "@/components/recipes/RecipeList.vue";
 
 // Stores
 import { useRecipesStore } from "@/stores/recipes";
-import { useSearchStore } from "@/stores/search";
+import { useFilteredRecipesStore } from "@/stores/filteredRecipes";
 import { storeToRefs } from "pinia";
 
-const { searchTerm } = storeToRefs(useSearchStore());
-
 const { fetchRecipes } = useRecipesStore();
+const { recipes } = storeToRefs(useRecipesStore());
+const { categoryRecipes } = storeToRefs(useFilteredRecipesStore());
 
 onIonViewWillEnter(async () => {
   await fetchRecipes();
 });
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+ion-content {
+  --ion-padding: 1.5rem;
+  --background: var(--background-color);
+}
+</style>

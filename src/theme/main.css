@@ -22,11 +22,6 @@
   --border-radius-m: 8px;
   --border-radius-l: 25px;
 }
-
-#app {
-  background-color: var(--background-color);
-}
-
 img {
   width: 100%;
 }

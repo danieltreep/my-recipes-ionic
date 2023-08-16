@@ -47,18 +47,14 @@
             placeholder="Select category"
             required
           >
-            <ion-select-option value="ontbijt">Ontbijt</ion-select-option>
+            <ion-select-option value="breakfast">Breakfast</ion-select-option>
             <ion-select-option value="lunch">Lunch</ion-select-option>
-            <ion-select-option value="hoofdgerecht"
-              >Hoofdgerecht</ion-select-option
-            >
-            <ion-select-option value="voorgerecht"
-              >Voorgerecht</ion-select-option
-            >
-            <ion-select-option value="desserts">Desserts</ion-select-option>
-            <ion-select-option value="bijgerecht">Bijgerecht</ion-select-option>
-            <ion-select-option value="tussendoor">Tussendoor</ion-select-option>
-            <ion-select-option value="drinken">Drinken</ion-select-option>
+            <ion-select-option value="dinner">Dinner</ion-select-option>
+            <ion-select-option value="starter">Starter</ion-select-option>
+            <ion-select-option value="dessert">Dessert</ion-select-option>
+            <ion-select-option value="side">Side dish</ion-select-option>
+            <ion-select-option value="snack">Snack</ion-select-option>
+            <ion-select-option value="drink">Drink</ion-select-option>
           </ion-select>
         </ion-item>
       </ul>

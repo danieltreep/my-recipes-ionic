@@ -1,15 +1,15 @@
 <template>
   <ion-header>
     <div class="top-section">
-      <ion-button fill="clear" color="dark" class="ion-no-padding">
-        <ion-icon :icon="search" slot="icon-only"></ion-icon>
-      </ion-button>
-      <h1>Recipes</h1>
+      <SearchBar @activate="searchActive = !searchActive" />
+
+      <Transition name="fade">
+        <h1 v-if="!searchActive">Recipes</h1>
+      </Transition>
 
       <FilterModal />
     </div>
 
-    <!-- <SearchBar /> -->
     <CategoryList />
   </ion-header>
 </template>
@@ -27,13 +27,18 @@ import TagList from "@/components/tags/TagList.vue";
 import FilterModal from "@/components/filter/FilterModal.vue";
 import { search } from "ionicons/icons";
 import CategoryList from "./categories/CategoryList.vue";
+import { ref } from "vue";
+
+const searchActive = ref(false);
 </script>
 
 <style lang="css" scoped>
 .top-section {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 2rem 1.5rem 0 1.5rem;
+  position: relative;
 }
 h1 {
   margin: 0 0 0.5rem 0;
@@ -41,8 +46,26 @@ h1 {
 }
 ion-icon {
   color: var(--font-color);
+  font-size: 20px;
 }
 ion-header {
   box-shadow: var(--element-box-shadow);
+}
+ion-button {
+  /* align-items: flex-end; */
+  min-height: 0 !important;
+  --height: 40px;
+}
+/* Transitions */
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-leave-active {
+  transition: all 0.1s;
+}
+.fade-enter-active {
+  transition: all 0.1s 0.1s;
 }
 </style>

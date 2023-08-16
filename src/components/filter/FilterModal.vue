@@ -93,6 +93,7 @@ p {
   font-size: 14px;
 }
 ion-icon {
+  font-size: 20px;
   color: var(--font-color);
 }
 </style>

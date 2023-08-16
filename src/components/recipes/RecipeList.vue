@@ -22,10 +22,4 @@ defineProps<{
 }>();
 </script>
 
-<style lang="css" scoped>
-.recipeList {
-  margin-top: 1rem;
-  border-top: 1px solid #d9d9d9;
-  padding-top: 1rem;
-}
-</style>
+<style lang="css" scoped></style>

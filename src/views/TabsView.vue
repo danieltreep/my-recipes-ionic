@@ -50,5 +50,7 @@ import {
 ion-tab-bar {
   padding-block: 0.5rem;
   --ion-tab-bar-color-selected: var(--primary-color);
+  box-shadow: 0 -2px 4px 0 #00000010;
+  --border: none;
 }
 </style>

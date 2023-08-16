@@ -1,21 +1,38 @@
 <template>
-  <ion-card @click="active = !active" :class="{ active: active }">
+  <ion-card @click="handleClick" :class="{ active: category === cat }">
     <img :src="imageUrl" />
     <p>{{ cat.charAt(0).toUpperCase() }}{{ cat.slice(1) }}</p>
   </ion-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+// Ionic
 import { IonCard } from "@ionic/vue";
 
+// Vue
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
+
+// Stores
+import { useFilteredRecipesStore } from "@/stores/filteredRecipes";
+
+// Props
 const props = defineProps<{
   cat: String;
 }>();
+
+// Refs
+const { category } = storeToRefs(useFilteredRecipesStore());
 const active = ref(false);
 const imageUrl = ref<string>(
   new URL(`/src/assets/vectors/${props.cat}.svg`, import.meta.url).href
 );
+
+// Functions
+const handleClick = () => {
+  category.value = props.cat;
+  active.value = !active.value;
+};
 </script>
 
 <style lang="css" scoped>

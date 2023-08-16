@@ -1,7 +1,7 @@
 <template>
-  <div class="recipeList" v-if="recipes.length">
+  <div class="recipeList" v-if="categoryRecipes().length">
     <RecipeThumbnail
-      v-for="recipe in recipes"
+      v-for="recipe in categoryRecipes()"
       :key="recipe.id"
       :recipe="recipe"
     />
@@ -15,11 +15,15 @@
 import NoRecipesVue from "@/components/recipes/NoRecipes.vue";
 // import RecipeListSuspense from '@/components/suspense/RecipeListSuspense.vue'
 import RecipeThumbnail from "./RecipeThumbnail.vue";
-import type { Recipe } from "@/types/Recipe";
 
-defineProps<{
-  recipes: Array<Recipe>;
-}>();
+import { useRecipesStore } from "@/stores/recipes";
+import { useFilteredRecipesStore } from "@/stores/filteredRecipes";
+import { storeToRefs } from "pinia";
+
+const { fetchRecipes } = useRecipesStore();
+const { categoryRecipes } = storeToRefs(useFilteredRecipesStore());
+
+await fetchRecipes();
 </script>
 
 <style lang="css" scoped></style>

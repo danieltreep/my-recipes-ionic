@@ -20,7 +20,7 @@ export const useNewRecipeStore = defineStore("newRecipe", () => {
 
   const currentIngredient = ref<Ingredient>({
     name: "",
-    amount: undefined,
+    amount: null,
     unit: "",
   });
 
@@ -33,7 +33,7 @@ export const useNewRecipeStore = defineStore("newRecipe", () => {
 
     newRecipe.value.ingredients.push(ingredient);
 
-    currentIngredient.value.amount = undefined;
+    currentIngredient.value.amount = null;
     currentIngredient.value.name = "";
     currentIngredient.value.unit = "";
   };

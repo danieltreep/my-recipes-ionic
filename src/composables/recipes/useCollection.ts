@@ -13,6 +13,7 @@ const useCollection = () => {
     error.value = null;
     isPending.value = true;
 
+    // Add doc and save reponse id
     try {
       console.log(document);
       const response = await addDoc(

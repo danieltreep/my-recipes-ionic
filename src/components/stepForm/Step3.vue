@@ -96,11 +96,14 @@ const handleSubmit = async () => {
 
     // // Reset steps and go to newly added recipe page
     router.push({
-      name: "Recipe",
-      params: { category: newRecipe.value.category, id: recipeId },
+      name: "Recipes",
     });
     resetStep();
     resetRecipe();
+    router.push({
+      name: "Recipe",
+      params: { id: recipeId },
+    });
   }
 };
 </script>

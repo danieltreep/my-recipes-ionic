@@ -1,5 +1,5 @@
 export interface Ingredient {
   name: string;
-  amount?: number | undefined;
+  amount?: number | null;
   unit?: string;
 }

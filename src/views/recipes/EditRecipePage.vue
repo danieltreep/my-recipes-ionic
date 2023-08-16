@@ -219,7 +219,7 @@ const handleSubmit = async () => {
   } else {
     // Check if there is an image in store, if so upload it.
     if (selectedRecipeImage.value) {
-      await uploadImage(selectedRecipeImage.value);
+      await uploadImage(selectedRecipeImage.value as File);
 
       // Update the new recipe with the returned filePath and url refs
       selectedRecipe.value.filePath = filePath.value;
@@ -229,14 +229,9 @@ const handleSubmit = async () => {
     // Add document with the value from newRecipe store
     await updateDocument(selectedRecipe.value);
 
-    // Reset steps and go to newly added recipe page
-    router.push({
-      name: "Recipe",
-      params: {
-        category: selectedRecipe.value.category,
-        id: selectedRecipe.value.id,
-      },
-    });
+    // Reset steps and go back to updated recipe page
+
+    router.go(-1);
   }
 };
 </script>

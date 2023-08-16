@@ -12,10 +12,17 @@
       class="ion-no-padding search-button"
       :class="{ active }"
       @click="handleClick"
+      size="small"
     >
       <ion-icon :icon="search" slot="icon-only"></ion-icon>
     </ion-button>
-    <input type="text" autofocus v-model="searchTerm" v-if="active" />
+    <input
+      type="text"
+      autofocus
+      v-model="searchTerm"
+      v-if="active"
+      :class="{ active }"
+    />
 
     <!-- <ion-icon
       v-if="active"
@@ -40,6 +47,7 @@ const active = ref(false);
 
 const handleClick = () => {
   active.value = !active.value;
+  searchTerm.value = "";
   emits("activate");
 };
 </script>
@@ -82,5 +90,13 @@ ion-icon {
   background-color: transparent;
   outline: none;
   border: none;
+  /* translate: -1rem; */
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.searchbar input.active {
+  translate: 0 0;
+  opacity: 1;
 }
 </style>

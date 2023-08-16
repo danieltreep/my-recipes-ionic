@@ -41,8 +41,8 @@ const searchActive = ref(false);
   position: relative;
 }
 h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: 32px;
+  margin: 0;
+  /* font-size: 32px; */
 }
 ion-icon {
   color: var(--font-color);

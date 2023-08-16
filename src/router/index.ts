@@ -18,6 +18,7 @@ const requireAuth = (to: any, from: any, next: Function) => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "/recipes",
     component: TabsView,
     beforeEnter: requireAuth,
     children: [
@@ -27,19 +28,13 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/recipes/RecipesPage.vue"),
       },
       {
-        path: "recipes/:category",
-        name: "Category",
-        component: () => import("@/views/recipes/CategoryPage.vue"),
-        props: true,
-      },
-      {
-        path: "recipes/:category/:id",
+        path: "/recipes/:id",
         name: "Recipe",
         component: () => import("@/views/recipes/RecipePage.vue"),
         props: true,
       },
       {
-        path: "recipes/edit",
+        path: "recipes/:id/edit",
         name: "Edit",
         component: () => import("@/views/recipes/EditRecipePage.vue"),
       },

@@ -2,7 +2,7 @@
   <ion-card
     :router-link="{
       name: 'Recipe',
-      params: { category: recipe.category, id: recipe.id },
+      params: { id: recipe.id },
     }"
     class="recipeThumb box"
   >
@@ -60,7 +60,7 @@ onMounted(() => {
   overflow: hidden;
   display: grid;
   grid-template-columns: 1.5fr 3fr;
-  height: 110px;
+  min-height: 100px;
   margin-bottom: 1rem;
 }
 .text {
@@ -69,7 +69,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 h3 {
   font-size: 16px;

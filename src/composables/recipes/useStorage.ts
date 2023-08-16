@@ -6,10 +6,7 @@ import {
   getDownloadURL,
   deleteObject,
 } from "firebase/storage";
-import getUser from "@/composables/auth/getUser";
-import type { User } from "firebase/auth";
-
-const { user } = getUser();
+import { auth } from "@/firebase/config";
 
 const useStorage = () => {
   const error = vueRef(null);
@@ -17,7 +14,7 @@ const useStorage = () => {
   const filePath = vueRef<string>(""); // Store filepath to use in uploadImage
 
   const uploadImage = async (file: File) => {
-    filePath.value = `images/${user.value.uid}/${file.name}`;
+    filePath.value = `images/${auth.currentUser!.uid}/${file.name}`;
     const storageRef = ref(storage, filePath.value);
 
     console.log(storageRef);

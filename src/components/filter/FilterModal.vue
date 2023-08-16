@@ -4,6 +4,7 @@
     fill="clear"
     color="dark"
     class="ion-no-padding"
+    size="small"
   >
     <ion-icon :icon="filter" slot="icon-only"></ion-icon>
   </ion-button>
@@ -42,10 +43,6 @@ import {
 import { filter } from "ionicons/icons";
 import TagList from "../tags/TagList.vue";
 
-defineProps({
-  openModalTrigger: Function,
-});
-
 const other = ["Vegetarian", "Oven", "BBQ"];
 
 const dish: Array<string> = [
@@ -74,11 +71,8 @@ const ingredients: Array<string> = [
 
 <style lang="css" scoped>
 ion-modal {
-  /* --max-width: 200px; */
-  /* --min-height: 100%; */
-  --ion-padding: 24px;
+  --ion-padding: 1.5rem;
   --height: auto;
-  /* --min-height: 600px; */
 }
 ion-button {
   --color: white;

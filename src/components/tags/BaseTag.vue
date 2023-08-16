@@ -28,12 +28,8 @@ const props = defineProps({
 // Refs
 const active = ref(false);
 
-const iconUrl = ref(
-  new URL(`/src/assets/tags/${props.name}-grey.svg`, import.meta.url).href
-);
-const iconUrlActive = ref(
-  new URL(`/src/assets/tags/${props.name}-white.svg`, import.meta.url).href
-);
+const iconUrl = ref(`/src/assets/tags/${props.name}-grey.svg`);
+const iconUrlActive = ref(`/src/assets/tags/${props.name}-white.svg`);
 </script>
 
 <style lang="css" scoped>

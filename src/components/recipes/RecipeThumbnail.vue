@@ -46,10 +46,11 @@ onMounted(() => {
   if (props.recipe.imageUrl) {
     image.value = props.recipe.imageUrl;
   } else {
-    image.value = new URL(
-      `/src/assets/categories/${props.recipe.category}.jpg`,
-      import.meta.url
-    ).href;
+    // image.value = new URL(
+    //   `/src/assets/categories/${props.recipe.category}.jpg`,
+    //   import.meta.url
+    // ).href;
+    image.value = `/src/assets/categories/${props.recipe.category}.jpg`;
   }
 });
 </script>

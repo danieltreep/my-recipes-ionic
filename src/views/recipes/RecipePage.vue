@@ -102,6 +102,7 @@ const props = defineProps<{
 
 // Store image url
 const imageUrl = ref("");
+const category = ref("breakfast");
 
 onIonViewWillEnter(async () => {
   await getDocument(props.id);
@@ -109,10 +110,11 @@ onIonViewWillEnter(async () => {
   if (selectedRecipe.value.imageUrl) {
     imageUrl.value = selectedRecipe.value.imageUrl;
   } else if (!selectedRecipe.value.imageUrl) {
-    imageUrl.value = new URL(
-      `/src/assets/categories/${selectedRecipe.value.category}.jpg`,
-      import.meta.url
-    ).href;
+    // imageUrl.value = new URL(
+    //   `/src/assets/categories/${selectedRecipe.value.category}.jpg`,
+    //   import.meta.url
+    // ).href;
+    imageUrl.value = `/src/assets/categories/${selectedRecipe.value.category}.jpg`;
   }
 });
 

@@ -24,9 +24,7 @@ const props = defineProps<{
 // Refs
 const { category } = storeToRefs(useFilteredRecipesStore());
 const active = ref(false);
-const imageUrl = ref<string>(
-  new URL(`/src/assets/vectors/${props.cat}.svg`, import.meta.url).href
-);
+const imageUrl = ref<string>(`/src/assets/vectors/${props.cat}.svg`);
 
 // Functions
 const handleClick = () => {

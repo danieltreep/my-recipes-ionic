@@ -1,5 +1,5 @@
 <template>
-  <ion-item-group>
+  <ul>
     <ion-item>
       <ion-input
         v-model="currentIngredient.name"
@@ -7,11 +7,11 @@
         placeholder="Ingredient"
       ></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
         v-model="(currentIngredient.amount as number)"
         type="number"
-        label="Hoeveelheid:"
+        label="Amount:"
         placeholder="0"
       ></ion-input>
 
@@ -25,12 +25,12 @@
         <ion-select-option value="el">el</ion-select-option>
         <ion-select-option value="tl">tl</ion-select-option>
       </ion-select>
-      <ion-button @click.prevent="handleAddIngredient">
+      <ion-button @click.prevent="handleAddIngredient" fill="outline">
         <ion-icon :icon="add" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
-    <ErrorMessage message="Voer een ingredient in" v-if="error" />
-  </ion-item-group>
+  </ul>
+  <ErrorMessage message="Add an ingredient" v-if="error" />
 </template>
 
 <script setup lang="ts">
@@ -66,30 +66,12 @@ const handleAddIngredient = () => {
 </script>
 
 <style lang="css" scoped>
-.addIngredient {
-  display: grid;
-  grid-template-columns: 5fr 4fr 1fr;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-.box {
-  background-color: var(--card-color);
-  padding: 0.7rem;
-  border-radius: var(--border-radius-m);
-  box-shadow: var(--box-shadow);
-  border: none;
-  display: flex;
-}
 input {
   width: fit-content;
   border: none;
   border-bottom: 1px solid var(--background-color);
   width: 100%;
   outline: transparent;
-}
-.eenheid {
-  display: grid;
-  grid-template-columns: 30px 1fr;
 }
 select {
   border: none;
@@ -98,10 +80,12 @@ select {
   outline: transparent;
   width: 100%;
 }
-.add {
-  border: 1px solid var(--secondary-color);
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
+ion-select {
+  margin-left: auto;
+}
+ul {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--element-box-shadow);
 }
 </style>

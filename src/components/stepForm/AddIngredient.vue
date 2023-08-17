@@ -11,7 +11,7 @@
       <ion-input
         v-model="(currentIngredient.amount as number)"
         type="number"
-        label="Hoeveelheid:"
+        label="Amount:"
         placeholder="0"
       ></ion-input>
 
@@ -30,7 +30,7 @@
       </ion-button>
     </ion-item>
   </ul>
-  <ErrorMessage message="Voer een ingredient in" v-if="error" />
+  <ErrorMessage message="Provide an ingredient" v-if="error" />
 </template>
 
 <script setup lang="ts">

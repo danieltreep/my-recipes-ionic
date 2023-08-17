@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit" class="page">
         <h3>Recept aanpassen</h3>
         <fieldset>
-          <legend>Informatie</legend>
+          <legend>Information</legend>
           <ion-item lines="none">
             <ion-icon :src="title" slot="start"></ion-icon>
             <ion-input
@@ -50,7 +50,7 @@
           </ion-item>
         </fieldset>
         <fieldset>
-          <legend>Beschrijving (optioneel)</legend>
+          <legend>Description (optional)</legend>
           <ion-item lines="none">
             <ion-textarea
               placeholder="Description"
@@ -63,14 +63,14 @@
             <legend>Tags</legend>
           </fieldset> -->
         <fieldset>
-          <legend>Afbeelding (optioneel)</legend>
+          <legend>Image (optional)</legend>
           <div class="image box" v-if="selectedRecipe.imageUrl">
             <img :src="selectedRecipe.imageUrl" />
           </div>
           <div class="addImage">
             <label for="fileInput" class="fileLabel" tabindex="0">
               <ion-icon :icon="cameraOutline"></ion-icon>
-              <p>Voeg een afbeelding toe</p>
+              <p>Add an image</p>
             </label>
             <label
               class="fileLabel"
@@ -90,7 +90,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Ingredienten</legend>
+          <legend>Ingredients</legend>
 
           <ul class="ingredients">
             <EditIngredientsListItem
@@ -105,7 +105,7 @@
         </fieldset>
 
         <fieldset>
-          <legend>Stappen</legend>
+          <legend>Steps</legend>
           <ul class="steps">
             <EditStepsListItem
               v-for="(step, index) in selectedRecipe.steps"
@@ -288,7 +288,7 @@ select:first-of-type {
   gap: 0.2rem;
   background-color: var(--card-color);
   width: fit-content;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--element-box-shadow);
   padding: 0.5rem 0.8rem;
 }
 .fileLabel .material-symbols-outlined {
@@ -296,6 +296,7 @@ select:first-of-type {
 }
 .image {
   padding: 1rem;
+  box-shadow: var(--element-box-shadow);
 }
 .image img {
   border-radius: var(--border-radius-s);
@@ -305,10 +306,13 @@ select:first-of-type {
   justify-content: space-between;
   margin-top: 0.5rem;
 }
+.addImage ion-icon {
+  font-size: 20px;
+}
 ul.ingredients {
   background-color: var(--card-color);
   border-radius: var(--border-radius-m);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--element-box-shadow);
   padding-left: 0;
 }
 
@@ -321,5 +325,8 @@ ion-item::part(native) {
 fieldset ion-icon {
   color: var(--primary-color);
   margin-right: 0.5rem;
+}
+ion-item {
+  box-shadow: var(--element-box-shadow);
 }
 </style>

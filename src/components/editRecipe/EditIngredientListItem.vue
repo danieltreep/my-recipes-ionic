@@ -5,7 +5,7 @@
         v-if="edit"
         @click.prevent="handleDelete(index)"
         @keydown.enter="handleDelete(index)"
-        :icon="trashBin"
+        :icon="closeCircleOutline"
         size="small"
       ></ion-icon>
 
@@ -31,7 +31,7 @@
 import { IonCheckbox, IonIcon, IonButton } from "@ionic/vue";
 import type { Ingredient } from "@/types/Ingredient";
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
-import { trashBin } from "ionicons/icons";
+import { closeCircleOutline, trashBin } from "ionicons/icons";
 import { ref } from "vue";
 
 const { deleteIngredient } = useSelectedRecipeStore();

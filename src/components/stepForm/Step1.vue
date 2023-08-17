@@ -2,7 +2,7 @@
   <form @submit.prevent="handleSubmit">
     <!-- <button>Volgende</button> -->
     <fieldset>
-      <legend>Informatie</legend>
+      <legend>Information</legend>
       <ul>
         <ion-item lines="full">
           <ion-icon :src="title" slot="start"></ion-icon>
@@ -57,7 +57,7 @@
       </ul>
     </fieldset>
     <fieldset>
-      <legend>Beschrijving (optioneel)</legend>
+      <legend>Description (optional)</legend>
       <ion-item lines="none" class="textarea">
         <ion-textarea
           placeholder="Description"
@@ -70,14 +70,14 @@
             <legend>Tags</legend>
         </fieldset> -->
     <fieldset>
-      <legend>Afbeelding (optioneel)</legend>
+      <legend>Image (optional)</legend>
       <div class="image box" v-if="imageUrl">
         <img :src="imageUrl" />
       </div>
       <div class="addImage">
         <label for="fileInput" class="fileLabel" tabindex="0">
           <ion-icon :icon="cameraOutline"></ion-icon>
-          <p>Voeg een afbeelding toe</p>
+          <p>Add an image</p>
         </label>
         <label class="fileLabel" v-if="imageUrl" @click.prevent="imageUrl = ''">
           <ion-icon :icon="refresh"></ion-icon>

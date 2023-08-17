@@ -1,10 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div class="error" v-if="error">
-      <p>Voeg een ingredient toe voordat u verder gaat</p>
-    </div>
+    <ErrorMessage message="Add an ingredient" v-if="error" />
+
     <fieldset>
-      <legend>Ingredienten</legend>
+      <legend>Ingredients</legend>
       <IngredientsList :ingredients="newRecipe.ingredients" :edit="true" />
       <AddIngredient />
     </fieldset>
@@ -31,6 +30,7 @@ import { useStepStore } from "@/stores/step";
 import { ref } from "vue";
 import { IonButton, IonIcon } from "@ionic/vue";
 import { chevronBack, chevronForward } from "ionicons/icons";
+import ErrorMessage from "../error/ErrorMessage.vue";
 
 const { increment, decrement } = useStepStore();
 const { newRecipe } = storeToRefs(useNewRecipeStore());

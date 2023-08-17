@@ -60,11 +60,9 @@ li {
   align-items: start;
   padding: 1rem;
   color: var(--font-color);
+  box-shadow: var(--element-box-shadow);
 }
-.step .material-symbols-outlined {
-  font-size: 16px;
-  color: var(--font-inactive);
-}
+
 .step:not(:first-of-type) {
   margin-top: 5px;
 }

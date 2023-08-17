@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <fieldset>
-      <legend>Stappen</legend>
+      <legend>Steps</legend>
       <ul>
         <StepsListItem
           v-for="(step, index) in newRecipe.steps"
@@ -36,10 +36,7 @@
       </ion-button>
     </div>
 
-    <ErrorMessage
-      message="Voeg een stap toe voordat u het recept opslaat"
-      v-if="error"
-    />
+    <ErrorMessage message="Add a step before saving" v-if="error" />
   </form>
 </template>
 

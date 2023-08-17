@@ -3,17 +3,14 @@
     <ion-item>
       <ion-textarea
         v-model="step"
-        placeholder="Beschrijf de stap hier ..."
+        placeholder="Describe the step ..."
       ></ion-textarea>
     </ion-item>
     <ion-button @click.prevent="handleAddStep" fill="outline">
-      Voeg stap toe
+      Add step
     </ion-button>
 
-    <ErrorMessage
-      message="Voer tekst in voor u de stap toevoegd"
-      v-if="error"
-    />
+    <ErrorMessage message="The step is empty" v-if="error" />
   </div>
 </template>
 

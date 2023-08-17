@@ -6,7 +6,7 @@
     }"
     class="recipeThumb box"
   >
-    <img :src="image" :alt="recipe.title" />
+    <img :src="imageUrl" :alt="recipe.title" />
     <div class="text">
       <h3>
         {{ recipe.title.charAt(0).toUpperCase() }}{{ recipe.title.slice(1) }}
@@ -40,17 +40,16 @@ const props = defineProps<{
   recipe: Recipe;
 }>();
 
-const image = ref("");
+const imageUrl = ref("");
 
-onMounted(() => {
+onMounted(async () => {
   if (props.recipe.imageUrl) {
-    image.value = props.recipe.imageUrl;
+    imageUrl.value = props.recipe.imageUrl;
   } else {
-    // image.value = new URL(
-    //   `/src/assets/categories/${props.recipe.category}.jpg`,
-    //   import.meta.url
-    // ).href;
-    image.value = `/src/assets/categories/${props.recipe.category}.jpg`;
+    const image = await import(
+      `../../assets/categories/${props.recipe.category}.jpg`
+    );
+    imageUrl.value = image.default;
   }
 });
 </script>

@@ -1,16 +1,16 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
-import getUser from '@/composables/auth/getUser';
+import { ref } from "vue";
+import { defineStore } from "pinia";
+import getUser from "@/composables/auth/getUser";
+import { onAuthStateChanged, type User } from "firebase/auth";
 
-export const useCurrentUserStore = defineStore('currentUser', () => {
-  
-  const { user } = getUser()
+export const useCurrentUserStore = defineStore("currentUser", () => {
+  const { user }: any = getUser();
 
-  const currentUser = ref<any>(user)
-  
+  const currentUser = ref<any>(user);
+
   const resetCurrentUser = () => {
-    currentUser.value = null
-  }
+    currentUser.value = null;
+  };
 
-  return { currentUser, resetCurrentUser }
-})
+  return { currentUser, resetCurrentUser };
+});

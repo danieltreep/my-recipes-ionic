@@ -9,7 +9,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-input
-        v-model="currentIngredient.amount"
+        v-model="(currentIngredient.amount as number)"
         type="number"
         label="Hoeveelheid:"
         placeholder="0"
@@ -89,7 +89,5 @@ ul {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--element-box-shadow);
-}
-ion-button {
 }
 </style>

@@ -9,7 +9,7 @@
     </ion-item>
     <ion-item>
       <ion-input
-        v-model="currentIngredient.amount"
+        v-model="(currentIngredient.amount as number)"
         type="number"
         label="Hoeveelheid:"
         placeholder="0"

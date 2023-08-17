@@ -1,11 +1,13 @@
 <template>
   <div class="category-container">
     <div class="category-slider">
-      <CategoryCard
-        v-for="category in categories"
-        :key="category"
-        :cat="category"
-      />
+      <Suspense>
+        <CategoryCard
+          v-for="category in categories"
+          :key="category"
+          :cat="category"
+        />
+      </Suspense>
     </div>
   </div>
 </template>

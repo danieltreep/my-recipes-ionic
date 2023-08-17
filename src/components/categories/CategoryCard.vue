@@ -1,6 +1,6 @@
 <template>
   <ion-card @click="handleClick" :class="{ active: category === cat }">
-    <img :src="imageUrl" />
+    <img :src="image.default" />
     <p>{{ cat.charAt(0).toUpperCase() }}{{ cat.slice(1) }}</p>
   </ion-card>
 </template>
@@ -24,7 +24,7 @@ const props = defineProps<{
 // Refs
 const { category } = storeToRefs(useFilteredRecipesStore());
 const active = ref(false);
-const imageUrl = ref<string>(`/src/assets/vectors/${props.cat}.svg`);
+const image = await import(`../../assets/vectors/${props.cat}.svg`);
 
 // Functions
 const handleClick = () => {

@@ -5,7 +5,7 @@
       <legend>Informatie</legend>
       <ul>
         <ion-item lines="full">
-          <ion-icon src="/src/assets/icons/title.svg" slot="start"></ion-icon>
+          <ion-icon :src="title" slot="start"></ion-icon>
           <ion-input
             label="Title:"
             v-model="newRecipe.title"
@@ -15,7 +15,7 @@
         </ion-item>
 
         <ion-item lines="full">
-          <ion-icon src="/src/assets/icons/person.svg" slot="start"></ion-icon>
+          <ion-icon :icon="personOutline" slot="start"></ion-icon>
           <ion-input
             label="People:"
             type="number"
@@ -37,10 +37,7 @@
         </ion-item>
 
         <ion-item lines="full">
-          <ion-icon
-            src="/src/assets/icons/room_service.svg"
-            slot="start"
-          ></ion-icon>
+          <ion-icon :src="dish" slot="start"></ion-icon>
           <ion-select
             label="Category:"
             v-model="newRecipe.category"
@@ -127,12 +124,14 @@ import {
   cameraOutline,
   chevronBack,
   chevronForward,
-  person,
   personOutline,
   refresh,
   text,
   timeOutline,
 } from "ionicons/icons";
+import title from "@/assets/icons/title.svg";
+import dish from "@/assets/icons/room_service.svg";
+import personIcon from "@/assets/icons/person.svg";
 
 const { increment } = useStepStore();
 const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore());

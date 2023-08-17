@@ -3,7 +3,7 @@
     <div class="information">
       <div class="detailsSection">
         <div class="detail">
-          <ion-icon src="/src/assets/icons/room_service.svg"></ion-icon>
+          <ion-icon :src="dish"></ion-icon>
           <p>
             {{ recipe.category.charAt(0).toUpperCase()
             }}{{ recipe.category.slice(1) }}
@@ -34,7 +34,7 @@
                   </div> -->
 
     <div class="persons box">
-      <ion-icon src="/src/assets/icons/person.svg"></ion-icon>
+      <ion-icon :icon="personOutline"></ion-icon>
       <p>Aantal personen</p>
       <div class="counter">
         <span tabindex="0" @click="handleDecrement">-</span>
@@ -77,6 +77,7 @@ import { storeToRefs } from "pinia";
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 import type { Ingredient } from "@/types/Ingredient";
 import { timeOutline, personOutline, restaurant } from "ionicons/icons";
+import dish from "@/assets/icons/room_service.svg";
 
 const { selectedRecipe } = storeToRefs(useSelectedRecipeStore());
 

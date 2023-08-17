@@ -6,7 +6,7 @@
         <fieldset>
           <legend>Informatie</legend>
           <ion-item lines="none">
-            <ion-icon src="/src/assets/icons/title.svg" slot="start"></ion-icon>
+            <ion-icon :src="title" slot="start"></ion-icon>
             <ion-input
               label="Title:"
               v-model="selectedRecipe.title"
@@ -14,10 +14,7 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-icon
-              src="/src/assets/icons/person.svg"
-              slot="start"
-            ></ion-icon>
+            <ion-icon :icon="personOutline" slot="start"></ion-icon>
             <ion-input
               label="Persons:"
               type="number"
@@ -35,8 +32,7 @@
           </ion-item>
 
           <ion-item lines="none">
-            <ion-icon src="/src/assets/icons/room_service.svg" slot="start">
-            </ion-icon>
+            <ion-icon :src="dish" slot="start"> </ion-icon>
             <ion-select
               label="Category:"
               v-model="selectedRecipe.category"
@@ -153,11 +149,13 @@ import EditIngredientsListItem from "@/components/editRecipe/EditIngredientListI
 import EditAddIngredients from "@/components/editRecipe/EditAddIngredients.vue";
 import EditStepsListItem from "@/components/editRecipe/EditStepsListItem.vue";
 import EditAddSteps from "@/components/editRecipe/EditAddSteps.vue";
+import ErrorMessage from "@/components/error/ErrorMessage.vue";
 
 // // Stores
 import { useNewRecipeStore } from "@/stores/newRecipe";
 import { useSelectedRecipeStore } from "@/stores/currentRecipe";
 
+// Ionic
 import {
   IonInput,
   IonPage,
@@ -170,19 +168,23 @@ import {
   IonTextarea,
 } from "@ionic/vue";
 
+// Icons
 import {
   alarm,
   cameraOutline,
   chevronBack,
   chevronForward,
   person,
+  personOutline,
   refresh,
   save,
   text,
   timeOutline,
 } from "ionicons/icons";
-import ErrorMessage from "@/components/error/ErrorMessage.vue";
+import title from "@/assets/icons/title.svg";
+import dish from "@/assets/icons/room_service.svg";
 
+//
 const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore());
 const { updateRecipeImage } = useSelectedRecipeStore();
 const { selectedRecipe, selectedRecipeImage } = storeToRefs(
@@ -196,6 +198,7 @@ const file = ref(null);
 const router = useRouter();
 const error = ref(false);
 
+// Functions
 const handleChange = (event: any) => {
   const selected = event.target.files[0];
 

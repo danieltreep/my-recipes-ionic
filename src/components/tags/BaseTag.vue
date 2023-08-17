@@ -18,7 +18,7 @@ import { IonChip, IonIcon } from "@ionic/vue";
 import { close } from "ionicons/icons";
 
 // Vue
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 // Props
 const props = defineProps({
@@ -27,9 +27,16 @@ const props = defineProps({
 
 // Refs
 const active = ref(false);
+const iconUrl = ref("");
+const iconUrlActive = ref("");
 
-const iconUrl = ref(`/src/assets/tags/${props.name}-grey.svg`);
-const iconUrlActive = ref(`/src/assets/tags/${props.name}-white.svg`);
+onMounted(async () => {
+  const icon = await import(`../../assets/tags/${props.name}-grey.svg`);
+  const iconActive = await import(`../../assets/tags/${props.name}-white.svg`);
+
+  iconUrl.value = icon.default;
+  iconUrlActive.value = iconActive.default;
+});
 </script>
 
 <style lang="css" scoped>

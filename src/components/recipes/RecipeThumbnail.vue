@@ -61,6 +61,7 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: 1.5fr 3fr;
   min-height: 100px;
+  max-height: 110px;
   margin-bottom: 1rem;
 }
 .text {

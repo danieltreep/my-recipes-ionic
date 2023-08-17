@@ -8,11 +8,6 @@
           <IonLabel>Recipes</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="new recipe" href="/new">
-          <IonIcon :icon="addCircleOutline" size="large" />
-          <IonLabel>New</IonLabel>
-        </IonTabButton>
-
         <IonTabButton tab="favorites" href="/favorites">
           <IonIcon :icon="heartOutline" size="large" />
           <IonLabel>Favorites</IonLabel>
@@ -49,7 +44,8 @@ import {
 <style lang="css" scoped>
 ion-tab-bar {
   padding-block: 0.5rem;
-  --ion-tab-bar-color-selected: var(--primary-color);
+  padding-inline: 2.5rem;
+  --ion-tab-bar-color-selected: var(--secondary-color);
   box-shadow: 0 -2px 4px 0 #00000010;
   --border: none;
 }

@@ -44,11 +44,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/AccountPage.vue"),
       },
       {
-        path: "new",
-        name: "NewRecipe",
-        component: () => import("@/views/recipes/NewRecipePage.vue"),
-      },
-      {
         path: "favorites",
         name: "Favorites",
         component: () => import("@/views/recipes/FavoritesPage.vue"),

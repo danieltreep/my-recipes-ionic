@@ -8,6 +8,7 @@
           <SuspenseList />
         </template>
       </Suspense>
+      <NewRecipeModal />
     </ion-content>
   </ion-page>
 </template>
@@ -20,6 +21,7 @@ import { IonPage, IonContent } from "@ionic/vue";
 import MainHeader from "@/components/MainHeader.vue";
 import RecipeList from "@/components/recipes/RecipeList.vue";
 import SuspenseList from "@/components/suspense/SuspenseList.vue";
+import NewRecipeModal from "./NewRecipeModal.vue";
 </script>
 
 <style lang="css">

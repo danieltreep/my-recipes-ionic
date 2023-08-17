@@ -15,6 +15,7 @@
   >
     <div class="ion-padding">
       <h4>Filter options</h4>
+
       <div class="filter-section">
         <p>Ingredients</p>
         <TagList :tags="ingredients" />
@@ -73,6 +74,7 @@ const ingredients: Array<string> = [
 ion-modal {
   --ion-padding: 1.5rem;
   --height: auto;
+  --border-radius: var(--border-radius-l) var(--border-radius-l) 0 0;
 }
 ion-button {
   --color: white;

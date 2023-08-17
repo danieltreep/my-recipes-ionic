@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form>
     <fieldset>
       <legend>Steps</legend>
       <ul>
@@ -18,25 +18,7 @@
         <ion-icon :icon="chevronBack"></ion-icon>
         Previous
       </ion-button>
-
-      <ion-button
-        type="submit"
-        v-if="isPending"
-        disabled
-        class="next"
-        fill="outline"
-      >
-        Saving...
-        <ion-icon :icon="chevronForward"></ion-icon>
-      </ion-button>
-
-      <ion-button v-else type="submit" class="next" fill="outline">
-        Save recipe
-        <ion-icon :icon="chevronForward"></ion-icon>
-      </ion-button>
     </div>
-
-    <ErrorMessage message="Add a step before saving" v-if="error" />
   </form>
 </template>
 
@@ -63,46 +45,12 @@ import { chevronBack, chevronForward } from "ionicons/icons";
 import ErrorMessage from "../error/ErrorMessage.vue";
 
 // Functions
-const { addDocument, isPending } = useCollection();
-const { resetRecipe } = useNewRecipeStore();
-const { decrement, resetStep } = useStepStore();
-const { filePath, url, uploadImage } = useStorage();
+const { isPending } = useCollection();
+const { decrement } = useStepStore();
 
 // Refs
-const { newRecipe, newRecipeImage } = storeToRefs(useNewRecipeStore());
+const { newRecipe } = storeToRefs(useNewRecipeStore());
 const error = ref(false);
-
-const router = useRouter();
-
-const handleSubmit = async () => {
-  // Show error if there are no errors
-  if (!newRecipe.value.steps.length) {
-    error.value = true;
-  } else {
-    // Check if there is an image in store, if so upload it.
-    if (newRecipeImage.value) {
-      await uploadImage(newRecipeImage.value);
-
-      // Update the new recipe with the returned filePath and url refs
-      newRecipe.value.filePath = filePath.value;
-      newRecipe.value.imageUrl = url.value;
-    }
-
-    // Add document with the value from newRecipe store
-    const recipeId = await addDocument(newRecipe.value);
-
-    // // Reset steps and go to newly added recipe page
-    router.push({
-      name: "Recipes",
-    });
-    resetStep();
-    resetRecipe();
-    router.push({
-      name: "Recipe",
-      params: { id: recipeId },
-    });
-  }
-};
 </script>
 
 <style lang="css" scoped>

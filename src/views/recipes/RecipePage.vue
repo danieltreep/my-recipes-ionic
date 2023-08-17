@@ -5,8 +5,8 @@
       <div class="page ion-padding">
         <header>
           <ion-button
-            @click="router.go(-1)"
-            @keydown.enter="router.go(-1)"
+            router-link="/recipes"
+            router-direction="back"
             class="ion-no-padding"
           >
             <ion-icon :icon="arrowBack" slot="icon-only"></ion-icon>

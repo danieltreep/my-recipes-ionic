@@ -3,7 +3,7 @@
     <!-- Transition? -->
     <Step1 v-if="step === 1" />
     <Step2 v-if="step === 2" />
-    <Step3 v-if="step === 3" />
+    <Step3 v-if="step === 3" @submit="$emit('submit')" />
   </div>
 </template>
 
@@ -17,6 +17,8 @@ import Step2 from "./Step2.vue";
 import Step3 from "./Step3.vue";
 
 const { step } = storeToRefs(useStepStore());
+
+defineEmits(["submit"]);
 </script>
 
 <style lang="css">

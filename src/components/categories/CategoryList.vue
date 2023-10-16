@@ -32,11 +32,12 @@ const categories = ref<Array<string>>([
 <style lang="css" scoped>
 .category-container {
   overflow: scroll;
-  padding-block: 2rem 1.5rem;
+  background-color: #fbfbfb;
+  box-shadow: inset 0px 0px 4px #00000025;
 }
 .category-slider {
   display: grid;
-  grid-template-columns: repeat(9, 70px);
+  grid-template-columns: repeat(9, 75px);
   gap: 8px;
   width: fit-content;
   margin-inline: 1.5rem;

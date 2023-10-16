@@ -1,25 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Roboto+Condensed:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Roboto";
+  font-family: "Poppins";
 }
 
 :root {
   --primary-color: #ab9140;
-  --secondary-color: #548498;
-  --background-color: #f7f7f7;
+  --secondary-color: #f9c49a;
+  --background-color: #fff;
   --card-color: white;
   --header-color: #2e2404;
+  --overlay-color: #242b39da;
 
   --font-inactive: #979797;
   --font-color: #464646;
-  --font-light: #d9d9d9;
+  --font-light: #ebebeb;
 
   --element-box-shadow: 0 2px 4px 0 #00000010;
   --border-radius-s: 4px;
-  --border-radius-m: 8px;
+  --border-radius-m: 15px;
   --border-radius-l: 25px;
 }
 img {
@@ -30,6 +31,10 @@ h3 {
   font-family: "Playfair Display", serif;
   color: var(--header-color);
 }
+h2 {
+  color: var(--font-light);
+  font-weight: 400 !important;
+}
 .box {
   background-color: var(--card-color);
   border-radius: var(--border-radius-m);
@@ -38,9 +43,6 @@ h3 {
 }
 ul {
   padding: 0;
-}
-ion-card {
-  --box-shadow: var(--element-box-shadow);
 }
 ion-input {
   text-align: end;

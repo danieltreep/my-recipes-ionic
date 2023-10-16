@@ -4,28 +4,29 @@
       name: 'Recipe',
       params: { id: recipe.id },
     }"
-    class="recipeThumb box"
+    class="recipeThumb"
   >
     <img :src="imageUrl" :alt="recipe.title" />
     <div class="text">
-      <h3>
+      <div class="time">
+        <ion-icon :icon="timeOutline"></ion-icon>
+
+        <p>{{ recipe.time }} MIN</p>
+      </div>
+      <p class="category">
+        {{ recipe.category.charAt(0).toUpperCase()
+        }}{{ recipe.category.slice(1) }}
+      </p>
+      <h2>
         {{ recipe.title.charAt(0).toUpperCase() }}{{ recipe.title.slice(1) }}
-      </h3>
-      <p class="description">
+      </h2>
+      <!-- <p class="description" v-if="recipe.description">
         {{ recipe.description?.charAt(0).toUpperCase()
         }}{{ recipe.description?.slice(1) }}
-      </p>
-      <div class="details">
-        <div class="time">
-          <ion-icon :icon="timeOutline"></ion-icon>
-
-          <p>{{ recipe.time }} min</p>
-        </div>
-        <div class="time">
-          <ion-icon :icon="personOutline"></ion-icon>
-          <p>{{ recipe.people }} personen</p>
-        </div>
-      </div>
+      </p> -->
+    </div>
+    <div class="favorite-indicator" v-if="recipe.favorite">
+      <ion-icon :icon="heart" class="favorite"></ion-icon>
     </div>
   </ion-card>
 </template>
@@ -34,7 +35,7 @@
 import { IonCard, IonIcon } from "@ionic/vue";
 import type { Recipe } from "@/types/Recipe";
 import { ref, onMounted } from "vue";
-import { timeOutline, personOutline } from "ionicons/icons";
+import { timeOutline, personOutline, heart } from "ionicons/icons";
 
 const props = defineProps<{
   recipe: Recipe;
@@ -59,21 +60,22 @@ onMounted(async () => {
   padding: 0;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1.5fr 3fr;
-  min-height: 100px;
-  max-height: 110px;
   margin-bottom: 1rem;
+  aspect-ratio: 9 / 5;
+  position: relative;
+  box-shadow: none;
+  border-radius: var(--border-radius-m);
 }
 .text {
-  padding: 0.7rem;
-  max-width: 300px;
+  padding: 1rem;
+  /* max-width: 300px; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: end;
+  /* gap: 0.5rem; */
 }
-h3 {
-  font-size: 16px;
+h2 {
+  font-size: 24px;
   -webkit-line-clamp: 2;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
@@ -83,8 +85,8 @@ h3 {
   display: -webkit-box;
   margin: 0;
 }
-p {
-  color: var(--font-color);
+.category {
+  color: var(--secondary-color);
 }
 .description {
   -webkit-line-clamp: 1;
@@ -95,32 +97,58 @@ p {
   text-overflow: ellipsis;
   display: -webkit-box;
   font-size: 12px;
-  color: var(--font-color);
+  color: var(--font-light);
+  /* color: #e5e5e5; */
+  margin-top: 0.5rem;
 }
 .time {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 10px;
   gap: 0.2rem;
   align-items: center;
-}
-.time .material-symbols-outlined {
-  font-size: 18px;
-  color: var(--primary-color);
+  background-color: var(--overlay-color);
+  width: fit-content;
+  border-radius: 12px;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: auto;
+  color: var(--font-light);
 }
 img {
   object-fit: cover;
-  object-position: center center;
+  object-position: top center;
+  position: absolute;
+  z-index: -1;
+}
+.text::after {
+  content: "";
+  inset: 0 0 0 0;
   height: 100%;
+  width: 100%;
+  background-image: linear-gradient(#00000010, #00000099 70%);
+  position: fixed;
+  z-index: -1;
 }
 a {
-  color: inherit;
-}
-.details {
-  display: flex;
-  gap: 0.5rem;
+  /* color: inherit; */
 }
 ion-icon {
-  color: var(--primary-color);
+  font-size: 12px;
+}
+
+.favorite-indicator {
+  background-color: var(--overlay-color);
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+  height: 45px;
+  width: 23px;
+  display: flex;
+  clip-path: polygon(100% 0, 100% 100%, 50% 70%, 0 100%, 0 0);
+}
+.favorite {
+  font-size: 16px;
+  margin: 0.5rem auto;
+  color: #db1f35;
 }
 </style>

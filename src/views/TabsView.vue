@@ -4,17 +4,17 @@
       <IonRouterOutlet></IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="recipes" href="/recipes">
-          <IonIcon :icon="bookOutline" size="large" />
+          <IonIcon :icon="bookOutline" />
           <IonLabel>Recipes</IonLabel>
         </IonTabButton>
 
         <IonTabButton tab="favorites" href="/favorites">
-          <IonIcon :icon="heartOutline" size="large" />
+          <IonIcon :icon="heartOutline" />
           <IonLabel>Favorites</IonLabel>
         </IonTabButton>
 
         <IonTabButton tab="account" href="/account">
-          <IonIcon :icon="personCircleOutline" size="large" />
+          <IonIcon :icon="personCircleOutline" />
           <IonLabel>Account</IonLabel>
         </IonTabButton>
       </IonTabBar>
@@ -43,7 +43,6 @@ import {
 
 <style lang="css" scoped>
 ion-tab-bar {
-  padding-block: 0.5rem;
   padding-inline: 2.5rem;
   --ion-tab-bar-color-selected: var(--secondary-color);
   box-shadow: 0 -2px 4px 0 #00000010;

@@ -36,13 +36,13 @@ const handleClick = () => {
 <style lang="css" scoped>
 ion-card {
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   box-shadow: none;
-  border-radius: var(--border-radius-m);
+  border-radius: 0;
   transition: 0.1s;
-  --background: var(--background-color);
-  border: 1px solid transparent;
-  height: 80px;
+  --background: transparent;
+  height: 100px;
+  opacity: 0.7;
 }
 ion-card p {
   font-weight: 500;
@@ -53,11 +53,12 @@ ion-card p {
 img {
   height: 40px;
   width: 40px;
-  aspect-ratio: 1;
+  /* aspect-ratio: 1; */
 }
 
 ion-card.active {
-  border: 1px solid var(--secondary-color);
-  --background: white;
+  border-bottom: 3px solid var(--primary-color);
+  font-weight: 600;
+  opacity: 1;
 }
 </style>

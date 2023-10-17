@@ -75,7 +75,6 @@ onMounted(async () => {
   /* gap: 0.5rem; */
 }
 h2 {
-  font-size: 24px;
   -webkit-line-clamp: 2;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;

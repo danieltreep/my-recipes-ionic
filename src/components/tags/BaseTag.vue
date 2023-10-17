@@ -42,18 +42,22 @@ onMounted(async () => {
 <style lang="css" scoped>
 ion-chip {
   --background: var(--background-color);
-
+  border: 1.5px solid var(--lines-color);
   --color: var(--font-color);
   display: flex;
   gap: 0.3rem;
   width: fit-content;
   transition: 0.2s;
   box-sizing: border-box;
-  border: 1px solid transparent;
+  border: 1px solid var(--lines-color);
+  font-size: 14px;
 }
 ion-chip.active {
   --background: var(--secondary-color);
   --color: white;
   border: 1.5px solid var(--secondary-color);
+}
+ion-icon {
+  font-size: 16px;
 }
 </style>

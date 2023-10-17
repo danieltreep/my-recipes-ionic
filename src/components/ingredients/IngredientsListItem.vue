@@ -56,7 +56,9 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem;
+  padding-block: 0.7rem;
+  font-size: 14px;
+  color: var(--font-color);
 }
 .checked {
   color: var(--font-inactive);
@@ -65,13 +67,14 @@ li {
   display: flex;
   font-size: 14px;
   gap: 0.2rem;
+  /* color: var(--font-label); */
 }
 .ingredient {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
 }
 ion-checkbox {
-  --checkbox-background-checked: transparent;
+  /* --checkbox-background-checked: transparent; */
 }
 </style>

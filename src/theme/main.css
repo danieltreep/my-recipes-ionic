@@ -14,12 +14,15 @@
   --header-color: #2e2404;
   --overlay-color: #242b39da;
 
+  --lines-color: #d9d9d9;
+
   --font-inactive: #979797;
   --font-color: #464646;
+  --font-label: #616161;
   --font-light: #ebebeb;
 
   --element-box-shadow: 0 2px 4px 0 #00000010;
-  --border-radius-s: 4px;
+  --border-radius-s: 8px;
   --border-radius-m: 15px;
   --border-radius-l: 25px;
 }
@@ -28,13 +31,20 @@ img {
 }
 h1,
 h3 {
-  font-family: "Playfair Display", serif;
   color: var(--header-color);
 }
+h1 {
+  font-size: 24px;
+}
 h2 {
+  font-size: 20px;
   color: var(--font-light);
   font-weight: 400 !important;
 }
+h3 {
+  font-size: 16px;
+}
+
 .box {
   background-color: var(--card-color);
   border-radius: var(--border-radius-m);

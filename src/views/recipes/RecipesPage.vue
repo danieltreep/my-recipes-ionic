@@ -3,7 +3,7 @@
     <MainHeader />
     <ion-content class="ion-padding">
       <Suspense>
-        <RecipeList />
+        <RecipeList :recipes="categoryRecipes()" />
         <template #fallback>
           <SuspenseList />
         </template>
@@ -22,6 +22,12 @@ import MainHeader from "@/components/MainHeader.vue";
 import RecipeList from "@/components/recipes/RecipeList.vue";
 import SuspenseList from "@/components/suspense/SuspenseList.vue";
 import NewRecipeModal from "./NewRecipeModal.vue";
+
+import { useRecipesStore } from "@/stores/recipes";
+import { useFilteredRecipesStore } from "@/stores/filteredRecipes";
+import { storeToRefs } from "pinia";
+
+const { categoryRecipes } = storeToRefs(useFilteredRecipesStore());
 </script>
 
 <style lang="css">

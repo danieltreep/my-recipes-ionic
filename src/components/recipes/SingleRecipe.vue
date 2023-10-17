@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="information">
+    <section class="information">
       <div class="detailsSection">
         <p>
           {{ recipe.category.charAt(0).toUpperCase()
@@ -14,9 +14,10 @@
         {{ recipe.description?.charAt(0).toUpperCase()
         }}{{ recipe.description?.slice(1) }}
       </p>
-    </div>
+    </section>
+
     <section class="tagsSection">
-      <h3>Tags</h3>
+      <!-- <h3>Tags</h3> -->
       <TagList :tags="tags" />
     </section>
 
@@ -27,15 +28,19 @@
       </div>
       <IngredientsList :ingredients="recipe.ingredients" :edit="false" />
     </section>
-    <ul>
-      <StepsListItemVue
-        v-for="(step, index) in recipe.steps"
-        :key="index"
-        :step="step"
-        :index="index"
-        :show-edit="false"
-      />
-    </ul>
+
+    <section>
+      <h3>Steps</h3>
+      <ul>
+        <StepsListItemVue
+          v-for="(step, index) in recipe.steps"
+          :key="index"
+          :step="step"
+          :index="index"
+          :show-edit="false"
+        />
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -56,12 +61,11 @@ const tags = ["Seafood", "Soup"];
 
 <style lang="css" scoped>
 /* Information section */
-.information {
-  margin: 2rem 0;
+section {
+  margin: 1.5rem 0;
   /* text-align: center; */
 }
 .detailsSection {
-  margin-bottom: 0.3rem;
   color: var(--font-label);
   font-size: 12px;
 }
@@ -73,10 +77,6 @@ h1 {
 .description {
   font-size: 14px;
   color: var(--font-color);
-}
-
-.tagsSection {
-  padding-bottom: 2rem;
 }
 h3 {
   font-size: 16px;

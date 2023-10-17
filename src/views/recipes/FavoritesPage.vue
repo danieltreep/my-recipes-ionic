@@ -7,21 +7,16 @@
           <ion-icon :icon="heart" size="large"></ion-icon>
           <h1>Favorieten</h1>
         </header>
-        <!-- <div class="tagsSection">
-                    <div class="tagsHeader">
-                        <p>Filter by tags</p>
-                        <span class="material-symbols-d">filter_list</span>
-                    </div>
-                    <div class="tags">
-                        <div class="tag">
-                            <p>Zoet</p>
-                        </div>
-                    </div>
-                </div> -->
-        <RecipeList :recipes="favorites" v-if="favorites.length" />
-        <div v-else class="niks">
-          <p>Je hebt nog geen favorieten</p>
-        </div>
+
+        <Suspense>
+          <RecipeList :recipes="favorites" />
+
+          <template #fallback>
+            <div class="niks">
+              <p>Je hebt nog geen favorieten</p>
+            </div>
+          </template>
+        </Suspense>
       </div>
     </ion-content>
   </ion-page>
@@ -32,16 +27,10 @@ import { IonPage, IonIcon, IonContent, onIonViewWillEnter } from "@ionic/vue";
 import RecipeList from "@/components/recipes/RecipeList.vue";
 import { useRecipesStore } from "@/stores/recipes";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
 import { heart } from "ionicons/icons";
 
 // const recipes = ref<any>([])
 const { favorites } = storeToRefs(useRecipesStore());
-const { fetchRecipes } = useRecipesStore();
-
-onIonViewWillEnter(async () => {
-  await fetchRecipes();
-});
 </script>
 
 <style lang="css" scoped>

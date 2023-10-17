@@ -2,6 +2,7 @@
   <ion-searchbar
     v-model="searchTerm"
     show-cancel-button="never"
+    show-clear-button="focus"
     class="ion-no-padding"
     placeholder="Search recipes"
   ></ion-searchbar>

@@ -1,5 +1,5 @@
 <template>
-  <li class="step box">
+  <li class="step">
     <div class="info">
       <p class="number">{{ index + 1 }}.</p>
       <ion-icon
@@ -56,11 +56,14 @@ const handleEdit = () => {
 <style lang="css" scoped>
 li {
   display: grid;
-  grid-template-columns: 1fr 7fr;
-  align-items: start;
-  padding: 1rem;
+  grid-template-columns: calc(18px + 1rem) 7fr 32px;
+  /* align-items: start; */
+  padding-block: 0.5rem;
   color: var(--font-color);
-  box-shadow: var(--element-box-shadow);
+  font-size: 14px;
+}
+li:not(:last-child) {
+  border-bottom: 1px solid var(--lines-color);
 }
 .step .material-symbols-outlined {
   font-size: 16px;
@@ -70,10 +73,10 @@ li {
   margin-top: 5px;
 }
 .number {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
   font-family: serif;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 .info {
   display: flex;
